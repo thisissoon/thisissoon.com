@@ -22,7 +22,7 @@ class TemplateMixin(object):
 
         return self.template
 
-    def render(self, context):
+    def render(self, context={}):
         """
         Render the view template with the passed context.
 
