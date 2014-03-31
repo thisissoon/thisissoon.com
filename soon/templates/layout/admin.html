@@ -1,0 +1,51 @@
+{% import 'admin/layout.html' as layout with context -%}
+{% extends 'admin/base.html' %}
+
+{% block head_tail %}
+    {{ super() }}
+    <link href='http://fonts.googleapis.com/css?family=Nixie+One' rel='stylesheet' type='text/css'>
+    <link href="{{ url_for('static', filename='css/admin/layout.css') }}" rel="stylesheet">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
+{% endblock %}
+
+{% block page_body %}
+<header>
+    <div class="container">
+        <h1>Admin System</h1>
+    </div>
+</header>
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+        {% block main_menu %}
+        <ul class="nav">
+        {{ layout.menu() }}
+        </ul>
+        {% endblock %}
+        {% block menu_links %}
+        <ul class="nav pull-right">
+        {{ layout.menu_links() }}
+        </ul>
+        {% endblock %}
+        {% block access_control %}
+        {% endblock %}
+        </div>
+    </div>
+</div>
+<div class="container">
+    {% block messages %}
+    {{ layout.messages() }}
+    {% endblock %}
+    {% set render_ctx = h.resolve_ctx() %}
+    {% block body %}{% endblock %}
+</div>
+{% endblock %}
+
+{% block tail %}
+<div id="footer">
+    <div class="container">
+        <hr />
+        <p class="muted credit pull-right"><a href="http://thisissoon.com">SOON_</a></p>
+    </div>
+</div>
+{% endblock %}

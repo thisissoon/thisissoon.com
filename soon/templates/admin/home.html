@@ -1,0 +1,40 @@
+{% extends 'admin/master.html' %}
+
+{% block body %}
+{% if current_user.is_authenticated() %}
+<h2>Hello</h2>
+<p>Welcome to the SOON_ administration system. Use the navigatgion at the top of the page to manage the various sections of the site.</p>
+{% else %}
+<h2>Authenticate</h2>
+<p>This area is private, please enter your credentials to access the admin system of the site.</p>
+<form action="{{ url_for('admin.index') }}" method="post" class="form-horizontal">
+    {{ form.hidden_tag() }}
+    {% if form.errors %}
+    <ul class="text-error">
+    {% for field_name, field_errors in form.errors|dictsort if field_errors %}
+        {% for error in field_errors %}
+            <li>{{ error }}</li>
+        {% endfor %}
+    {% endfor %}
+    </ul>
+    {% endif %}
+    <div class="control-group{% if form.errors %} error{% endif %}">
+            {{ form.email.label(class_='control-label') }}
+        <div class="controls">
+            {{ form.email() }}
+        </div>
+    </div>
+    <div class="control-group{% if form.errors %} error{% endif %}">
+        {{ form.password.label(class_='control-label') }}
+        <div class="controls">
+            {{ form.password() }}
+        </div>
+    </div>
+    <div class="control-group">
+        <div class="controls">
+            <button type="submit" class="btn btn-primary">Login</button>
+        </div>
+    </div>
+</form>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,19 @@
+body {
+  padding-top: 50px;
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Nixie One', cursive;
+}
+
+h1 {
+  background-image: url(../../img/soon_black.png);
+  -webkit-background-size: 150px 59px;
+  -moz-background-size: 150px 59px;
+  background-size: 150px 59px;
+  background-repeat: no-repeat;
+  background-position: left center;
+  font-size: 3.4em;
+  padding: 20px 0 20px 180px;
+}
