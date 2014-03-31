@@ -27,7 +27,7 @@ db-upgrade:
 	python ./manage.py db upgrade
 
 runserver:
-	python ./manage.py server
+	python ./manage.py runserver
 
 # Documentaion Helpers
 

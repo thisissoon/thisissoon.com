@@ -27,6 +27,10 @@ migrate = Migrate(app, db)
 EMAIL_REGEX = re.compile(r"[^@]+@[^@]+\.[^@]+")
 
 
+# Override runserver command so we bind to all interfaces
+manager.add_command("runserver", Server(host="0.0.0.0", port=5000))
+
+
 def _make_context():
     """
     Return context dict for a shell session so you can access
