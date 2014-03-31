@@ -33,8 +33,8 @@ def load_config(app, override=None):
     app.config.from_object('soon.config.default')
 
     # Override using os environment variable
-    if os.environ.get('soon_SETTINGS_PATH'):
-        app.config.from_envvar('soon_SETTINGS_PATH')
+    if os.environ.get('SOON_SETTINGS_PATH'):
+        app.config.from_envvar('SOON_SETTINGS_PATH')
 
     # If override path is supplied use those settings
     if override:
