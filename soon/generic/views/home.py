@@ -11,7 +11,7 @@ from soon.generic.views.mixins import TemplateMixin
 
 class HomeView(MethodView, TemplateMixin):
 
-    template = 'index.html'
+    template = 'home.html'
 
     def get(self):
         """

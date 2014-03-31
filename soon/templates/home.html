@@ -1,0 +1,188 @@
+{%- extends 'base.html' -%}
+
+{%- block javascript_tail %}
+<script src="{{ url_for('static', filename='js/soon.js') }}"></script>
+{% endblock -%}
+
+{%- block body %}
+<a id="hello" /></a>
+<div id="slide1" class="slide" data-stellar-background-ratio="0.5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 hidden-sm visible-md visible-lg"></div>
+            <div class="col-xs-12 col-sm-9">
+                <h1>Hello</h1>
+                <p class="lead-copy">We make brands successful by
+                combining insightful <em>strategy</em>, seamless
+                <em>technology</em>, persuasive <em>design</em> and
+                relevant <em>content</em>.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<a id="what" /></a>
+<div style="background:url('{{ url_for('static', filename='img/bg_39.jpg') }}') no-repeat;background-size:100% 100%">
+    <div id="slide2" class="slide" data-stellar-background-ratio="0.5">
+        <div class="container panel-2">
+            <div class="row">
+                <div class="col-md-3 hidden-sm visible-md visible-lg"></div>
+                <div class="col-xs-12 col-sm-9">
+                    <h2>We can help you be more digital<span class="grey">*</span></h2>
+                    <p class="intro">Digital isn’t about technology any more. It’s your shop window, brochure, customer services and marketing departments. And it is becoming part of everyone’s products &amp; services.</p>
+                    <p class="grey">*we don’t like the word “digital”, but it’s the word people use. Ask us and we’ll tell you why.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="slide3" class="slide" data-stellar-background-ratio="0.5">
+    <div class="container panel-3">
+        <div class="row">
+            <div class="col-md-3 hidden-sm visible-md visible-lg"></div>
+            <div class="col-md-9 col-xs-9">
+                <h2>We make brilliant digital things...</h2>
+                <p>In more detail, we provide:</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 hidden-sm visible-md visible-lg"></div>
+            <div class="col-md-2 col-xs-6">
+                <h3>1</h3>
+                <h4 class="underline">Strategy</h4>
+                <ul>
+                    <li>Digital strategy</li>
+                    <li>Service design</li>
+                    <li>User testing</li>
+                    <li>Digital consumer research</li>
+                </ul>
+            </div>
+            <div class="col-md-2 col-xs-6">
+                <h3>2</h3>
+                <h4 class="underline">Branding</h4>
+                <ul>
+                    <li>Brand development</li>
+                    <li>Identity</li>
+                    <li>Digital design direction</li>
+                    <li>Content guidelines</li>
+                </ul>
+            </div>
+            <div class="col-md-2 col-xs-6">
+                <h3>3</h3>
+                <h4 class="underline">Development</h4>
+                <ul>
+                    <li>Responsive websites</li>
+                    <li>Digital services &amp; platforms</li>
+                    <li>eCommerce</li>
+                    <li>Prototyping</li>
+                </ul>
+            </div>
+            <div class="col-md-2 col-xs-6">
+                <h3>4</h3>
+                <h4 class="underline">Physical</h4>
+                <ul>
+                    <li>Event installations</li>
+                    <li>Digital retail experiences</li>
+                    <li>Digital point of sale</li>
+                    <li>Research &amp; Development</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<a id="projects" /></a>
+<div id="slide4" class="slide" data-stellar-background-ratio="0.5">
+    <div class="container">
+        <div class="carousel slide" data-ride="carousel" id="myCarousel">
+            <div class="carousel-inner">
+                <div class="folio-1 item active"><img src="{{ url_for('static', filename='img/1_RA.png') }}"></div>
+                <div class="folio-2 item"><img src="{{ url_for('static', filename='img/2_RA.png') }}"></div>
+                <div class="folio-3 item"><img src="{{ url_for('static', filename='img/3_RA.png') }}"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 hidden-sm visible-md visible-lg"></div>
+            <div class="col-md-9 col-xs-9">
+                <a href="http://www.residentadvisor.net" target="_blank">www.residentadvisor.net</a>
+                <p class="grey">We have just launched a new identity and web-platform for online electronic music magazine Resident Advisor<br />
+                Launched: January 2014</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<a id="jobs" /></a>
+<div id="slide5" class="slide" data-stellar-background-ratio="0.5">
+    <div class="container panel-3">
+        <div class="row">
+            <div class="col-md-3 hidden-sm visible-md visible-lg"></div>
+            <div class="col-md-9 col-xs-9">
+                <h2>Work with us</h2>
+                <p class="intro">SOON_ is growing
+                steadily and we are always on the look out for great
+                talent. If you have something special to offer, please
+                get in touch.</p>
+            </div>
+        </div>
+        <div class="row" style="padding-bottom:20px;">
+            <div class="col-md-3 hidden-sm visible-md visible-lg"></div>
+            <div class="col-md-4 col-xs-6">
+                <h4 class="underline">Junior Digital Designer</h4>
+                <p class="grey">We need the greatest grad ever or a designer with a couple of years experience looking to spread their wings.</p>
+                <p><a href="{{ url_for('static',filename='pdf/SOON_job_spec_junior_designer.pdf') }}" target="_blank">View details</a></p>
+            </div>
+            <div class="col-md-4 col-xs-6">
+                <h4 class="underline">Digital Designer</h4>
+                <p class="grey">We need an experienced digital designer to own the art direction and design of projects as well as tackling branding &amp; identity work.</p>
+                <p><a href="{{ url_for('static', filename='pdf/SOON_job_spec_digital_designer.pdf') }}" target="_blank">View details</a></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 hidden-sm visible-md visible-lg"></div>
+            <div class="col-md-4 col-xs-6">
+                <h4 class="underline">Front-end Developer</h4>
+                <p class="grey">We need an HTML/CSS/Javascript legend who wants to create interfaces for a new generation of digital services &amp; platforms.</p>
+                <p><a href="{{ url_for('static', filename='pdf/SOON_job_spec_front end dev.pdf') }}" target="_blank">View details</a></p>
+            </div>
+            <div class="col-md-4 col-xs-6">
+                <h4 class="underline">Freelancers</h4>
+                <p class="grey">We’re always keen to hear from great specialist freelancers, so please send your portfolio or details to:</p>
+                <p><a href="mailto:mercs@thisissoon.com">mercs@thisissoon.com</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="slide7" class="slide" data-stellar-background-ratio="0.5">
+    <div class="container contact">
+        <div class="row">
+            <div class="col-md-3 hidden-sm visible-md visible-lg">
+            </div>
+            <div class="col-md-9 col-xs-9">
+                <h1>Say hello</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 hidden-sm visible-md visible-lg"></div>
+            <div class="col-md-3 col-xs-6">
+                <h4 class="underline white">Visit us:</h4>
+                <p>The Third Floor<br>
+                Fergusson House<br>
+                124-128 City Road<br>
+                London<br>
+                EC1V 2NJ</p>
+            </div>
+            <div class="col-md-3 col-xs-6">
+                <h4 class="underline white">Get in touch:</h4>
+                <p>
+                    <a href="mailto:sophie@thisissoon.com">sophie@thisissoon.com</a><br />
+                    +44 (0) 208 1230 900<br />
+                    <a href="https://twitter.com/soonlondon" target="_blank">@thisissoon</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock -%}
