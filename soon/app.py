@@ -6,6 +6,7 @@
 """
 
 from flask import Flask
+from soon.generic.views.home import HomeView
 from soon.loader import (
     load_config,
     register_extenstions,
@@ -39,5 +40,8 @@ def create_app(config=None):
     # Upload endooints - Only in debug
     if app.config['DEBUG']:
         register_uploads(app)
+
+    # Register homepage
+    app.add_url_rule('/', view_func=HomeView.as_view('home'))
 
     return app
