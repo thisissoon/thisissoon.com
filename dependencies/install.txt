@@ -18,3 +18,6 @@ psycopg2==2.5.2
 
 # Admin
 Flask-Admin==1.0.7
+
+# Server
+uWSGI==2.0.3

@@ -45,3 +45,7 @@ def create_app(config=None):
     app.add_url_rule('/', view_func=HomeView.as_view('home'))
 
     return app
+
+
+if __name__ == '__main__':
+    create_app()
