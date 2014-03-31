@@ -6,13 +6,16 @@
 """
 
 from flask.views import MethodView
+from soon.generic.views.mixins import TemplateMixin
 
 
-class HomeView(MethodView):
+class HomeView(MethodView, TemplateMixin):
+
+    template = 'index.html'
 
     def get(self):
         """
         Render the homepage on GET requests.
         """
 
-        return 'home'
+        return self.render()
