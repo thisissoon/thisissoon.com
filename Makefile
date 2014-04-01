@@ -18,16 +18,16 @@ test:
 # Convenience methods
 
 db-init:
-	python ./manage.py db init
+	manage.py db init
 
 db-migrate:
-	python ./manage.py db migrate
+	manage.py db migrate
 
 db-upgrade:
-	python ./manage.py db upgrade
+	manage.py db upgrade
 
 runserver:
-	python ./manage.py runserver
+	manage.py runserver
 
 # Documentaion Helpers
 

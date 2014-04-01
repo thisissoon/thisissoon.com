@@ -21,3 +21,6 @@ Flask-Admin==1.0.7
 
 # Server
 uWSGI==2.0.3
+
+# Static Collection for Production
+Flask-Collect==0.2.2

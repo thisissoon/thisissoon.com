@@ -12,7 +12,7 @@ from flask import Flask
 from flask.ext.security import SQLAlchemyUserDatastore
 from soon.exceptions import ImproperlyConfigured
 from soon.generic.views.home import HomeView
-from soon.ext import db, migrate, security
+from soon.ext import collect, db, migrate, security
 from werkzeug import SharedDataMiddleware
 
 
@@ -134,6 +134,9 @@ def register_extenstions(app):
         index_view=AdminHomeView(name='Dashboard'),
         base_template='layout/admin.html')
     admin.init_app(app)
+
+    # Static Collect
+    collect.init_app(app)
 
 
 def register_blueprints(app):

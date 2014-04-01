@@ -14,7 +14,7 @@ from flask.ext.migrate import Migrate, MigrateCommand
 from flask.ext.script import Manager, prompt, prompt_pass, Shell, Server
 from flask.ext.security import SQLAlchemyUserDatastore
 from flask.ext.security.utils import encrypt_password
-from soon.ext import db
+from soon.ext import collect, db
 from soon.loader import create_app
 from soon.auth.models import User, Role
 
@@ -22,6 +22,7 @@ from soon.auth.models import User, Role
 app = create_app()
 manager = Manager(app)
 migrate = Migrate(app, db)
+collect.init_script(manager)
 
 
 EMAIL_REGEX = re.compile(r"[^@]+@[^@]+\.[^@]+")
@@ -97,5 +98,9 @@ manager.add_command('db', MigrateCommand)
 manager.add_command("shell", Shell(make_context=_make_context))
 
 
-if __name__ == "__main__":
+def run():
     manager.run()
+
+
+if __name__ == "__main__":
+    run()
