@@ -20,3 +20,8 @@ migrate = Migrate()
 
 from flask.ext.security import Security
 security = Security()
+
+# Static Collection
+
+from flask.ext.collect import Collect
+collect = Collect()
