@@ -8,8 +8,10 @@
 
 import os
 
+from flask import Flask
 from flask.ext.security import SQLAlchemyUserDatastore
 from soon.exceptions import ImproperlyConfigured
+from soon.generic.views.home import HomeView
 from soon.ext import db, migrate, security
 from werkzeug import SharedDataMiddleware
 
@@ -170,3 +172,36 @@ def register_uploads(app):
     app.wsgi_app = SharedDataMiddleware(app.wsgi_app, {
         '/uploads':  app.config['UPLOAD_DIR']
     })
+
+
+def create_app(config=None):
+    """
+    Create a flask application, optionally passing in a path to a separate
+    config file to override existing configuration
+
+    :param config: Path to config file
+    :type config: str
+
+    :returns: flask.app.Flask -- Flask application
+    """
+
+    # Initialize Flask Application
+    app = Flask(__name__)
+
+    # Load Configuration
+    load_config(app)
+
+    # Initialize extensions
+    register_extenstions(app)
+
+    # Dynamically load blueprints
+    register_blueprints(app)
+
+    # Upload endooints - Only in debug
+    if app.config['DEBUG']:
+        register_uploads(app)
+
+    # Register homepage
+    app.add_url_rule('/', view_func=HomeView.as_view('home'))
+
+    return app

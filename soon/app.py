@@ -2,51 +2,14 @@
 
 """
 .. module:: soon.app
-   :synopsis: Flask application factory
+   :synopsis: Spawn application for uWSGI
 """
 
-from flask import Flask
-from soon.generic.views.home import HomeView
-from soon.loader import (
-    load_config,
-    register_extenstions,
-    register_blueprints,
-    register_uploads)
+from soon.loader import create_app
 
 
-def create_app(config=None):
-    """
-    Create a flask application, optionally passing in a path to a separate
-    config file to override existing configuration
-
-    :param config: Path to config file
-    :type config: str
-
-    :returns: flask.app.Flask -- Flask application
-    """
-
-    # Initialize Flask Application
-    app = Flask(__name__)
-
-    # Load Configuration
-    load_config(app)
-
-    # Initialize extensions
-    register_extenstions(app)
-
-    # Dynamically load blueprints
-    register_blueprints(app)
-
-    # Upload endooints - Only in debug
-    if app.config['DEBUG']:
-        register_uploads(app)
-
-    # Register homepage
-    app.add_url_rule('/', view_func=HomeView.as_view('home'))
-
-    return app
+app = create_app()
 
 
 if __name__ == '__main__':
-    app = create_app()
     app.run(host='0.0.0.0')

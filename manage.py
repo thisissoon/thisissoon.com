@@ -14,8 +14,8 @@ from flask.ext.migrate import Migrate, MigrateCommand
 from flask.ext.script import Manager, prompt, prompt_pass, Shell, Server
 from flask.ext.security import SQLAlchemyUserDatastore
 from flask.ext.security.utils import encrypt_password
-from soon.app import create_app
 from soon.ext import db
+from soon.loader import create_app
 from soon.auth.models import User, Role
 
 
