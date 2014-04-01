@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
-.. module:: soon.app
+.. module:: soon.run
    :synopsis: Spawn application for uWSGI
 """
 
