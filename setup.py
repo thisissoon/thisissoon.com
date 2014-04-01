@@ -83,6 +83,12 @@ setup(
     # Dependencies not hosted on PyPi
     dependency_links=[],
     # Classifiers for Package Indexing
+    # Entry points, for example Flask-Script
+    entry_points={
+        'console_scripts': [
+            'manage.py = soon.manage:run',
+        ]
+    },
     classifiers=[
         'Environment :: Web Environment',
         'Development Status :: 2 - Pre-Alpha',
