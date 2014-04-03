@@ -11,7 +11,7 @@ import os
 from flask import Flask
 from flask.ext.security import SQLAlchemyUserDatastore
 from soon.exceptions import ImproperlyConfigured
-from soon.generic.views.home import HomeView
+from soon.views.home import HomeView
 from soon.ext import collect, db, migrate, security
 from werkzeug import SharedDataMiddleware
 
@@ -125,7 +125,7 @@ def register_extenstions(app):
 
     # Admin
     from flask.ext.admin import Admin
-    from soon.generic.views.admin import AdminHomeView
+    from soon.views.admin import AdminHomeView
 
     global admin
 

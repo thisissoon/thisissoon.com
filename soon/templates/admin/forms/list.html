@@ -1,0 +1,72 @@
+{% extends 'admin/master.html' %}
+
+{% block body %}
+{{ super() }}
+<h2>List</h2>
+<form action="#" method="post" enctype="multipart/form-data" id="list-form">
+    <ul class="nav nav-tabs">
+        <li class="active">
+            <a href="#">Objects</a>
+        </li>
+        <li>
+            <a href="{{ url_for("admin.users.create") }}"><i class="icon-plus-sign"></i> Create</a>
+        </li>
+        {% if with_selected %}
+        <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">With selected <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+                {% for name, action in with_selected %}
+                <li><a href="{{ action }}">{{ name }}</a></li>
+                {% endfor %}
+            </ul>
+        </li>
+        {% endif %}
+    </ul>
+    <table class="table table-bordered table-hover table-striped table-condensed">
+        <thead>
+            <tr>
+                <th width="0%"><i class="icon-chevron-down"></i></th>
+                {% for column in columns %}
+                <td width="{{ 100 / columns|length }}%">{{ get_column_name(column) }}</td>
+                {% endfor %}
+                <th width="0%"><i class="icon-edit"></i></th>
+                <th width="0%"><i class="icon-trash"></i></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for obj in pages.items %}
+            <tr>
+                <td>
+                    <label class="checkbox">
+                        <input id="objects" name="objects" type="checkbox" value="{{ obj.id }}">
+                    </label>
+                </td>
+                {% for column in columns %}
+                <td>{{ get_value(obj, column) }}</td>
+                {% endfor %}
+                <td width="0%"><a href="{{ url_for("admin.users.edit", pk=obj.id) }}"><i class="icon-edit"></i></a></td>
+                <td width="0%"><a href="{{ url_for("admin.users.delete", pk=obj.id) }}"><i class="icon-trash"></i></a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</form>
+<div id='login-box' class='pull-right control-group'>
+    <a href="{{ url_for("admin.users.create") }}" class="btn btn-success"><i class="icon-plus-sign icon-white"></i> Create</a>
+</div>
+{% endblock %}
+
+{% block tail_js %}
+{{ super() }}
+<script type="text/javascript">
+$(document).ready(function() {
+    var form = $('#list-form');
+    form.find('.dropdown-menu a').bind('click', function(e) {
+        e.preventDefault();
+        var action = $(this).attr('href');
+        form.attr('action', action);
+        form.submit();
+    });
+});
+</script>
+{% endblock %}
