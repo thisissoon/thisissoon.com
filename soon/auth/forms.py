@@ -13,9 +13,31 @@ from flask.ext.wtf import Form
 from soon.auth.models import User
 from soon.ext import db
 from wtforms_alchemy import model_form_factory
-from wtforms.validators import ValidationError
+from wtforms.fields import PasswordField
+from wtforms.validators import Required, EqualTo, ValidationError
 
 ModelForm = model_form_factory(Form)
+
+
+class UserPasswordForm(ModelForm):
+    password = PasswordField('New Password', [
+        Required(),
+        EqualTo('confirm', message='Passwords must match')])
+    confirm = PasswordField('Confirm')
+
+    class Meta:
+        model = User
+        only = ['password', ]
+
+    @classmethod
+    def get_session():
+        return db.session
+
+    def validate_password(form, field):
+        # Encrypt the password and update the form data so when the user
+        # is created in the DB an encrypted password is used
+        password = encrypt_password(field.data)
+        field.data = password
 
 
 class NewUserAdminForm(ModelForm):

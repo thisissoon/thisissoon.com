@@ -6,12 +6,18 @@
 """
 
 from flask import flash, request
-from soon.views.mixins.models import ModelMixin
-from soon.views.mixins.forms import FormMixin, ModelFormMixin
+from soon.views.mixins.models import SingleModelMixin
+from soon.views.mixins.forms import (
+    SingleFormMixin,
+    SingleFormModelMixin,
+    MultiFormSingleModelMixin)
 from sqlalchemy import update
 
 
 class UpdateMixin(object):
+    """
+    #TODO: Doc this
+    """
 
     def __init__(self, *args, **kwargs):
         """
@@ -34,7 +40,10 @@ class UpdateMixin(object):
         raise NotImplementedError('`update` method is not implimented')
 
 
-class UpdateFormMixin(UpdateMixin, FormMixin):
+class UpdateFormMixin(UpdateMixin, SingleFormMixin):
+    """
+    #TODO: Doc this
+    """
 
     def get_context(self):
         """
@@ -70,7 +79,10 @@ class UpdateFormMixin(UpdateMixin, FormMixin):
         return form
 
 
-class UpdateModelMixin(UpdateMixin, ModelMixin):
+class UpdateModelMixin(UpdateMixin, SingleModelMixin):
+    """
+    #TODO: Doc this
+    """
 
     def update(self, data):
         """
@@ -81,8 +93,8 @@ class UpdateModelMixin(UpdateMixin, ModelMixin):
         """
 
         session = self.get_session()
-        obj = self.get_object()
         model = self.get_model()
+        obj = self.get_object()
 
         stmt = update(model).where(model.id == self.pk).\
             values(**data)
@@ -90,10 +102,16 @@ class UpdateModelMixin(UpdateMixin, ModelMixin):
         session.execute(stmt)
         session.commit()
 
-        flash('{0} was update.'.format(obj), 'success')
+        flash('{0} was updated.'.format(obj), 'success')
 
 
-class UpdateModelFromMixin(UpdateModelMixin, UpdateFormMixin, ModelFormMixin):
+class UpdateModelWithFromMixin(object):
+    """
+    This mixin provides update functionality for mixins which have a form
+    from which to populate the object. This Mixin should be used together
+    with `SingleFormMixin` or `MultiFormMixin` to update a single model
+    instance.
+    """
 
     def get_form(self):
         """
@@ -119,6 +137,50 @@ class UpdateModelFromMixin(UpdateModelMixin, UpdateFormMixin, ModelFormMixin):
 
         return form
 
+    def update(self):
+        """
+        Updates the instance of supplied model by populating the object with
+        the form data.
+        """
+
+        form = self.get_form()
+        session = self.get_session()
+        obj = self.get_object()
+
+        # Populate object and commit the changes
+        form.populate_obj(obj)
+        session.commit()
+
+        flash('{0} was updated.'.format(obj), 'success')
+
+    def post(self, pk):
+        """
+        #TODO: Doc This
+        """
+
+        self.pk = pk
+
+        form = self.get_form()
+
+        if not form.errors:
+            # Call the callback after if form validated, no data needs to be
+            # passed as we are using form.populate_object
+            self.valid_callback()
+
+            # Call and return on_complete
+            return self.on_complete()
+
+        return self.render()
+
+
+class UpdateModelFromMixin(
+        UpdateModelWithFromMixin,
+        UpdateFormMixin,
+        SingleFormModelMixin):
+    """
+    #TODO: Doc this
+    """
+
     def get(self, pk):
         """
         Handle GET requests where the primary key of the instance to be updated
@@ -135,22 +197,28 @@ class UpdateModelFromMixin(UpdateModelMixin, UpdateFormMixin, ModelFormMixin):
 
         self.pk = pk
 
-        return super(UpdateModelMixin, self).get()
+        return super(UpdateModelFromMixin, self).get()
 
-    def post(self, pk):
+
+class UpdateMultiFormSingleModelMixin(
+        UpdateModelWithFromMixin,
+        MultiFormSingleModelMixin):
+    """
+    #TODO: Doc This
+    """
+
+    def __init__(self, *args, **kwargs):
         """
-        Handle POST requests where the primary key of the instance to be
-        updated is passed in via a uri, for example /edit/1 where the url rule
-        would be /edit/<int:pk>. Save the pk as an instance attribute to be
-        used in other methods.
-
-        Args:
-            pk (int): Primary key of instance to be updated
-
-        Returns:
-            str. The rendered template
+        #TODO: Doc this
         """
 
-        self.pk = pk
+        self.valid_callback = self.update
 
-        return super(UpdateModelMixin, self).post()
+    def get_form(self):
+        """
+        #TODO: Doc this
+        """
+
+        self.get_forms()
+
+        return super(UpdateMultiFormSingleModelMixin, self).get_form()

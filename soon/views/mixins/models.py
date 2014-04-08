@@ -7,10 +7,26 @@
 """
 
 
-class ModelMixin(object):
+class SingleModelMixin(object):
     """
     Methods for integrating database models into views.
     """
+
+    def get_context(self):
+        """
+        Overrides parents context returner adding extra context specific for
+        this mixin.
+
+        Returns:
+            dict. The context
+        """
+
+        super(SingleModelMixin, self).get_context()
+
+        if hasattr(self, 'pk'):
+            self.context['obj'] = self.get_object()
+
+        return self.context
 
     def get_session(self):
         """
@@ -57,15 +73,20 @@ class ModelMixin(object):
             obj. An instance of the model
 
         Raises
-            werkzeug.exceptions.NotFound
+            werkzeug.exceptions.NotFound, NotImplementedError
         """
 
         model = self.get_model()
 
         try:
+            pk = self.pk
+        except AttributeError:
+            raise NotImplementedError('`pk` has not been set for `get_object`')
+
+        try:
             obj = self._obj
         except AttributeError:
-            obj = model.query.filter_by(id=self.pk).first_or_404()
+            obj = model.query.filter_by(id=pk).first_or_404()
             self._obj = obj
 
         return obj

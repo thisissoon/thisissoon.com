@@ -7,7 +7,7 @@
 
 from flask import flash, request, redirect, url_for
 from soon.views.mixins.template import TemplateMixin
-from soon.views.mixins.models import ModelMixin
+from soon.views.mixins.models import SingleModelMixin
 
 
 class DeleteMixin(TemplateMixin):
@@ -86,7 +86,7 @@ class DeleteMixin(TemplateMixin):
                                       '`DeleteMixin`')
 
 
-class DeleteModelMixin(DeleteMixin, ModelMixin):
+class DeleteModelMixin(DeleteMixin, SingleModelMixin):
 
     methods = ['GET', ]
 

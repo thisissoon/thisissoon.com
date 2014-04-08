@@ -12,7 +12,9 @@ from soon.views.mixins.create import CreateModelFormMixin
 from soon.views.mixins.delete import MultiDeleteModelMixin
 from soon.views.mixins.list import ListModelMixin
 from soon.views.mixins.template import TemplateMixin
-from soon.views.mixins.update import UpdateModelFromMixin
+from soon.views.mixins.update import (
+    UpdateModelFromMixin,
+    UpdateMultiFormSingleModelMixin)
 
 
 class AdminBaseView(admin.BaseView):
@@ -199,3 +201,22 @@ class AdminMultiDeleteMixin(MultiDeleteModelMixin, AdminTemplateMixin):
         self.admin = admin
 
         return super(AdminMultiDeleteMixin, self).post()
+
+
+class AdmminUpdateMultiFormMixin(
+        UpdateMultiFormSingleModelMixin,
+        AdminTemplateMixin):
+
+    template = 'admin/forms/edit_multi_forms.html'
+
+    def get(self, admin, pk):
+        self.admin = admin
+        self.pk = pk
+
+        return super(AdmminUpdateMultiFormMixin, self).get()
+
+    def post(self, admin, pk):
+        self.admin = admin
+        self.pk = pk
+
+        return super(AdmminUpdateMultiFormMixin, self).post(pk)

@@ -1,6 +1,9 @@
-{% macro form(action=None, legend=None, form=None) %}
-<hr />
-<form action="{{ action|default('#') }}" method="POST" class="form-horizontal" enctype="multipart/form-data">
+{% macro form(action=None, legend=None, form=None, index=None) %}
+{% if not legend %}<hr />{% endif %}
+<form {% if index %}id="form{{ index }}" {% endif %}action="{{ action|default('#') }}" method="POST" class="form-horizontal" enctype="multipart/form-data">
+    {% if index %}
+        <input type="hidden" name="form" id="form" value="form{{ index }}">
+    {% endif %}
     <fieldset>
         {% if legend %}
             <legend>{{ legend }}</legend>

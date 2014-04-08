@@ -7,14 +7,17 @@
 
 from flask.views import MethodView
 from flask.ext.admin import expose_plugview
-from soon.auth.forms import NewUserAdminForm, UpdateUserAdminForm
+from soon.auth.forms import (
+    NewUserAdminForm,
+    UpdateUserAdminForm,
+    UserPasswordForm)
 from soon.auth.models import User
 from soon.ext import db
 from soon.views.admin import AdminBaseView
 from soon.views.admin.mixins import (
     AdminListMixin,
     AdminCreateFormMixin,
-    AdminUpdateFormMixin,
+    AdmminUpdateMultiFormMixin,
     AdminMultiDeleteMixin)
 from soon.views.fmt import bool_admin_fmt
 
@@ -46,14 +49,17 @@ class UserAdminView(AdminBaseView):
         cancel_url = 'admin.users.index'
 
     @expose_plugview('/edit/<int:pk>')
-    class edit(AdminUpdateFormMixin, MethodView):
+    class edit(AdmminUpdateMultiFormMixin, MethodView):
 
         model = User
         session = db.session
-        form_class = UpdateUserAdminForm
         success_url = 'admin.users.index'
         cancel_url = 'admin.users.index'
         delete_url = 'admin.users.delete'
+        forms = [
+            ('Change Password', UserPasswordForm),
+            ('Update User', UpdateUserAdminForm),
+        ]
 
     @expose_plugview('/delete')
     @expose_plugview('/delete/<int:pk>')

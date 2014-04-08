@@ -5,7 +5,7 @@
     {{ super() }}
     <h2>{% block h2 %}Edit {{ model.__name__ }}{% endblock %}</h2>
     {% block instructions %}
-    <p>Make your changes and then click the <b>Save</b> button at the bottom of the form. Alternatively you can exit by clicking <b>cancel</b>{% if delete_url %} or delete this record by clicking the <b>delete</b> button{% endif %}.</p>
+    <p>Make your changes and then click the <span class="label label-info">Save</span> button at the bottom of the form. Alternatively you can exit by clicking <span class="label">Cancel</span>{% if delete_url %} or delete this record by clicking the <span class="label label-important">Delete</span> button{% endif %}.</p>
     {% endblock %}
     {% call macros.form(form=form, action=submit_url) %}
         {{ macros.form_fields(form) }}
