@@ -54,6 +54,10 @@ class User(db.Model, UserMixin, CreateUpdateMixin):
         info={'form_field_class': TextField})
     login_count = db.Column(db.Integer)
 
+    # Optional
+    first_name = db.Column(db.Unicode(150), info={'label': 'First Name'})
+    last_name = db.Column(db.Unicode(150), info={'label': 'Last Name'})
+
     # Relations
     roles = db.relationship(
         'Role',

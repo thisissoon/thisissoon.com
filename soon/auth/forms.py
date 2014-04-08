@@ -22,7 +22,13 @@ class NewUserAdminForm(ModelForm):
 
     class Meta:
         model = User
-        only = ['email', 'password', 'active', 'super_user']
+        only = [
+            'email',
+            'password',
+            'first_name',
+            'last_name',
+            'active',
+            'super_user']
 
     @classmethod
     def get_session():
@@ -39,7 +45,7 @@ class UpdateUserAdminForm(ModelForm):
 
     class Meta:
         model = User
-        only = ['email', 'active', 'super_user']
+        only = ['email', 'first_name', 'last_name', 'active', 'super_user']
 
     @classmethod
     def get_session():
