@@ -1,0 +1,21 @@
+{% extends 'admin/master.html' %}
+{% import 'admin/forms/macros.html' as macros with context %}
+
+{% block body %}
+
+<h2>{% block h2 %}CHANGE ME{% endblock %}</h2>
+{% block instructions %}
+<p>Instructions Text</p>
+{% endblock %}
+
+{% for name, form in forms %}
+    {% call macros.form(form=form, action=submit_url, legend=name, index=loop.index) %}
+        {{ macros.form_fields(form) }}
+        {% call macros.form_controls() %}
+            {{ macros.save_button() }}
+            {{ macros.cancel_button('') }}
+        {% endcall %}
+    {% endcall %}
+{% endfor %}
+
+{% endblock %}

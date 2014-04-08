@@ -227,3 +227,92 @@ class ModelFormMixin(ModelMixin, FormMixin):
             return url_for(delete_url, pk=pk)
 
         return None
+
+
+class MultiFormMixin(TemplateMixin):
+    """
+    This mixin allows for mutliple forms to be rendered on a single view.
+
+    Usage:
+
+    .. code-block:: pythpn
+        :linenos:
+
+        from soon.views.mixins.forms import MultiFormMixin
+
+        class MyView(ListModelMixin)
+            forms = [
+                ('Form 1', MyFormOne),
+                ('Form 2', MyFormTwo),
+                ('Form 3', MyFormThree)
+            ]
+    """
+
+    methods = ['GET', 'POST']
+
+    def get_context(self):
+        """
+        TODO: Doc this
+        """
+
+        super(MultiFormMixin, self).get_context()
+
+        self.context['forms'] = self.get_forms()
+
+        try:
+            from flask.ext.wtf.form import _is_hidden
+            self.context['is_hidden_field'] = _is_hidden
+        except ImportError:
+            pass
+
+        return self.context
+
+    def get_form_classes(self):
+        """
+        Returns the raw form classes defined in `self.forms` attribute
+
+        Returns:
+            list. Tuple List of name and uninstantiated class
+
+        Raises:
+            NotImplementedError
+        """
+
+        try:
+            return self.forms
+        except AttributeError:
+            raise NotImplementedError('`forms` attribute must be defined for'
+                                      '`MultiFormMixin` classes')
+
+    def instantiate_form(self, kls, prefix):
+        """
+        Instantiates the provided form class and returns it
+        """
+
+        form = kls(prefix=prefix)
+        if request.method == 'POST' or request.method == 'PUT':
+            if request.values.get('form') == prefix:
+                form.validate_on_submit()
+
+        return form
+
+    def get_forms(self):
+        """
+        Takes the raw list of forms with their none instantiated form classes
+        and Instantiates them returns them.
+
+        Returns:
+            list. Tuple List of name and instantiated class
+        """
+
+        forms = self.get_form_classes()
+        instantiated_forms = []
+
+        for i, values in enumerate(forms, start=1):
+            name, kls = values
+            instantiated_forms.append((
+                name,
+                self.instantiate_form(kls, 'form{0}'.format(i))
+            ))
+
+        return instantiated_forms

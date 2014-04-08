@@ -7,10 +7,14 @@
 
 from flask.views import MethodView
 from flask.ext.admin import expose_plugview
-from soon.auth.forms import NewUserAdminForm, UpdateUserAdminForm
+from soon.auth.forms import (
+    NewUserAdminForm,
+    UpdateUserAdminForm,
+    UserPasswordForm)
 from soon.auth.models import User
 from soon.ext import db
 from soon.views.admin import AdminBaseView
+from soon.views.mixins.forms import MultiFormMixin
 from soon.views.admin.mixins import (
     AdminListMixin,
     AdminCreateFormMixin,
@@ -63,3 +67,17 @@ class UserAdminView(AdminBaseView):
         session = db.session
         success_url = 'admin.users.index'
         cancel_url = 'admin.users.index'
+
+    @expose_plugview('/edit/multi/<int:pk>')
+    class multi(MultiFormMixin, MethodView):
+        template = 'admin/users/multi.html'
+        forms = [
+            ('Edit User', UpdateUserAdminForm),
+            ('Change Password', UserPasswordForm),
+        ]
+
+        def get(self, admin, pk):
+            return admin.render(self.template, **self.get_context())
+
+        def post(self, admin, pk):
+            return admin.render(self.template, **self.get_context())
