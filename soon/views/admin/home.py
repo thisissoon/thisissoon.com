@@ -7,6 +7,7 @@
 
 from flask import redirect, request, url_for
 from flask.ext.admin import AdminIndexView, expose_plugview
+from flask.ext.login import logout_user
 from flask.views import MethodView
 
 
@@ -34,3 +35,10 @@ class AdminHomeView(AdminIndexView):
             return admin.render('admin/home.html', **{
                 'form': form
             })
+
+    @expose_plugview('/logout')
+    class logout(MethodView):
+
+        def get(self, admin):
+            logout_user()
+            return redirect(url_for('admin.index'))
