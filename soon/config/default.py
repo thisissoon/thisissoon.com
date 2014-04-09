@@ -9,7 +9,9 @@ import os
 
 # Paths
 
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+BASE_DIR = os.path.join(
+    os.path.dirname(os.path.dirname(__file__)),
+    '..')
 
 # Debug
 
@@ -32,8 +34,12 @@ SQLALCHEMY_DATABASE_URI = os.environ.get('SQLALCHEMY_DATABASE_URI') or \
 
 BLUEPRINTS = [
     'soon.auth',
+    'soon.jobs',
 ]
 
-# Uploads
+# Media (Uploads etc)
 
-UPLOAD_DIR = os.path.join(BASE_DIR, '..', 'media')
+# URL to serve media from - used for DEBUG=True only
+MEDIA_URL = '/media'
+# Absaolute path for actually saving files
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

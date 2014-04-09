@@ -25,3 +25,6 @@ uWSGI==2.0.3
 
 # Static Collection for Production
 Flask-Collect==0.2.2
+
+# Misc
+pytz==2014.2

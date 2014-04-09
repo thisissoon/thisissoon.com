@@ -122,12 +122,10 @@ class DeleteModelMixin(DeleteMixin, SingleModelMixin):
 
         if self.is_confirmed():
             session = self.get_session()
-            model = self.get_model()
             obj = self.get_object()
             success_url = self.get_success_url()
 
-            model.query.filter_by(id=pk).delete()
-
+            session.delete(obj)
             session.commit()  # Delete happens here
 
             flash('{0} was successfuly deleted'.format(obj), 'success')
@@ -198,16 +196,15 @@ class MultiDeleteModelMixin(DeleteModelMixin):
         True.
         """
 
-        model = self.get_model()
         session = self.get_session()
+        objs = self.get_objects()
 
-        ids = [int(id) for id in request.values.getlist('objects')]
-        model.query.filter(model.id.in_(ids)).delete(
-            synchronize_session=False)
+        for obj in objs:
+            session.delete(obj)
 
         session.commit()  # Delete happens here
 
-        flash('{0} record(s) deleted.'.format(len(ids)), 'success')
+        flash('{0} record(s) deleted.'.format(len(objs)), 'success')
 
     def post(self):
         """
