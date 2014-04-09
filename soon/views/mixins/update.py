@@ -6,8 +6,11 @@
 """
 
 from flask import flash, request
-from soon.views.mixins.models import ModelMixin
-from soon.views.mixins.forms import FormMixin, ModelFormMixin
+from soon.views.mixins.models import SingleModelMixin
+from soon.views.mixins.forms import (
+    SingleFormMixin,
+    SingleFormModelMixin,
+    MultiFormSingleModelMixin)
 from sqlalchemy import update
 
 
@@ -34,7 +37,7 @@ class UpdateMixin(object):
         raise NotImplementedError('`update` method is not implimented')
 
 
-class UpdateFormMixin(UpdateMixin, FormMixin):
+class UpdateFormMixin(UpdateMixin, SingleFormMixin):
 
     def get_context(self):
         """
@@ -70,7 +73,7 @@ class UpdateFormMixin(UpdateMixin, FormMixin):
         return form
 
 
-class UpdateModelMixin(UpdateMixin, ModelMixin):
+class UpdateModelMixin(UpdateMixin, SingleModelMixin):
 
     def update(self, data):
         """
@@ -93,7 +96,10 @@ class UpdateModelMixin(UpdateMixin, ModelMixin):
         flash('{0} was update.'.format(obj), 'success')
 
 
-class UpdateModelFromMixin(UpdateModelMixin, UpdateFormMixin, ModelFormMixin):
+class UpdateModelFromMixin(
+        UpdateModelMixin,
+        UpdateFormMixin,
+        SingleFormModelMixin):
 
     def get_form(self):
         """
@@ -154,3 +160,18 @@ class UpdateModelFromMixin(UpdateModelMixin, UpdateFormMixin, ModelFormMixin):
         self.pk = pk
 
         return super(UpdateModelMixin, self).post()
+
+
+class UpdateMultiFormSingleModelMixin(
+        MultiFormSingleModelMixin,
+        UpdateModelMixin):
+    """
+    TODO: Doc This
+    """
+
+    def __init__(self, *args, **kwargs):
+        """
+        TODO: Doc this
+        """
+
+        self.valid_callback = self.update

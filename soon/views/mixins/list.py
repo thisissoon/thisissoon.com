@@ -5,11 +5,11 @@
    :synopsis: Mixins for Flask pluggable views for rendering lists
 """
 
-from soon.views.mixins.models import ModelMixin
+from soon.views.mixins.models import SingleModelMixin
 from soon.views.mixins.template import TemplateMixin
 
 
-class ListModelMixin(ModelMixin, TemplateMixin):
+class ListModelMixin(SingleModelMixin, TemplateMixin):
     """
     Mixin view class to help with generic list rendering of objects from
     supplied model.

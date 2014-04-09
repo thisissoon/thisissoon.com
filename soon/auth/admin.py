@@ -14,11 +14,11 @@ from soon.auth.forms import (
 from soon.auth.models import User
 from soon.ext import db
 from soon.views.admin import AdminBaseView
-from soon.views.mixins.forms import MultiFormMixin
 from soon.views.admin.mixins import (
     AdminListMixin,
     AdminCreateFormMixin,
     AdminUpdateFormMixin,
+    AdmminUpdateMultiFormMixin,
     AdminMultiDeleteMixin)
 from soon.views.fmt import bool_admin_fmt
 
@@ -69,15 +69,14 @@ class UserAdminView(AdminBaseView):
         cancel_url = 'admin.users.index'
 
     @expose_plugview('/edit/multi/<int:pk>')
-    class multi(MultiFormMixin, MethodView):
+    class multi(AdmminUpdateMultiFormMixin, MethodView):
+
+        model = User
+        session = db.session
         template = 'admin/users/multi.html'
+        success_url = 'admin.users.index'
+        cancel_url = 'admin.users.index'
         forms = [
             ('Edit User', UpdateUserAdminForm),
             ('Change Password', UserPasswordForm),
         ]
-
-        def get(self, admin, pk):
-            return admin.render(self.template, **self.get_context())
-
-        def post(self, admin, pk):
-            return admin.render(self.template, **self.get_context())

@@ -6,8 +6,8 @@
 """
 
 from flask import request, flash
-from soon.views.mixins.forms import FormMixin
-from soon.views.mixins.models import ModelMixin
+from soon.views.mixins.forms import SingleFormMixin
+from soon.views.mixins.models import SingleModelMixin
 
 
 class CreateMixin(object):
@@ -33,7 +33,7 @@ class CreateMixin(object):
         raise NotImplementedError('`create` method is not implimented')
 
 
-class CreateFormMixin(CreateMixin, FormMixin):
+class CreateFormMixin(CreateMixin, SingleFormMixin):
 
     def get_form(self):
         """
@@ -55,7 +55,7 @@ class CreateFormMixin(CreateMixin, FormMixin):
         return form
 
 
-class CreateModelMixin(CreateMixin, ModelMixin):
+class CreateModelMixin(CreateMixin, SingleModelMixin):
 
     def create(self, data):
         """

@@ -25,6 +25,14 @@ class UserPasswordForm(ModelForm):
         EqualTo('confirm', message='Passwords must match')])
     confirm = PasswordField('Confirm')
 
+    class Meta:
+        model = User
+        only = ['password', ]
+
+    @classmethod
+    def get_session():
+        return db.session
+
 
 class NewUserAdminForm(ModelForm):
 
