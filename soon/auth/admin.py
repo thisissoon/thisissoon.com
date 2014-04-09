@@ -31,6 +31,7 @@ class UserAdminView(AdminBaseView):
         model = User
         records_per_page = 30
         columns = ['email', 'active', 'super_user', 'last_login_at']
+        create_url = 'admin.users.create'
         formatters = {
             'active': bool_admin_fmt,
             'super_user': bool_admin_fmt
