@@ -7,9 +7,13 @@
 
 from flask.views import MethodView
 from flask.ext.admin import expose_plugview
+from soon.ext import db
+from soon.jobs.forms import JobForm
 from soon.jobs.models import Job
 from soon.views.admin import AdminBaseView
-from soon.views.admin.mixins import AdminListMixin
+from soon.views.admin.mixins import (
+    AdminListMixin,
+    AdminCreateFormMixin)
 
 
 class JobAdminView(AdminBaseView):
@@ -21,3 +25,13 @@ class JobAdminView(AdminBaseView):
         model = Job
         records_per_page = 30
         columns = ['title', 'created', 'updated']
+        create_url = 'admin.jobs.create'
+
+    @expose_plugview('/create')
+    class create(AdminCreateFormMixin, MethodView):
+
+        model = Job
+        form_class = JobForm
+        session = db.session
+        success_url = 'admin.jobs.index'
+        cancel_url = 'admin.jobs.index'

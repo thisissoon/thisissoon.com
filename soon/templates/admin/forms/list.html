@@ -8,9 +8,11 @@
         <li class="active">
             <a href="#">Objects</a>
         </li>
+        {% if create_url %}
         <li>
-            <a href="{{ url_for("admin.users.create") }}"><i class="icon-plus-sign"></i> Create</a>
+            <a href="{{ create_url }}"><i class="icon-plus-sign"></i> Create</a>
         </li>
+        {% endif %}
         {% if with_selected %}
         <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">With selected <b class="caret"></b></a>
@@ -51,9 +53,6 @@
         </tbody>
     </table>
 </form>
-<div id='login-box' class='pull-right control-group'>
-    <a href="{{ url_for("admin.users.create") }}" class="btn btn-success"><i class="icon-plus-sign icon-white"></i> Create</a>
-</div>
 {% endblock %}
 
 {% block tail_js %}

@@ -5,6 +5,7 @@
    :synopsis: Mixins for Flask pluggable views for rendering lists
 """
 
+from flask import url_for
 from soon.views.mixins.models import SingleModelMixin
 from soon.views.mixins.template import TemplateMixin
 
@@ -25,6 +26,25 @@ class ListModelMixin(SingleModelMixin, TemplateMixin):
             template = 'path/to/template.html'
             model = MyModel
     """
+
+    def get_context(self):
+        """
+        Override the default `get_context` provided by `TemplateMixin`
+        and add the `get_value` method so formatters can be applied to
+        specific columns.
+
+        Returns:
+            dict. Request context data
+        """
+
+        super(ListModelMixin, self).get_context()
+
+        self.context['columns'] = self.columns
+        self.context['get_value'] = self.get_value
+        self.context['get_column_name'] = self.get_column_name
+        self.context['create_url'] = self.get_create_url()
+
+        return self.context
 
     def get_value(self, instance, name):
         """
@@ -72,23 +92,20 @@ class ListModelMixin(SingleModelMixin, TemplateMixin):
 
         return name
 
-    def get_context(self):
+    def get_create_url(self):
         """
-        Override the default `get_context` provided by `TemplateMixin`
-        and add the `get_value` method so formatters can be applied to
-        specific columns.
+        Get the url for create button links, if not set return None so the
+        the buttons are not rendered.
 
         Returns:
-            dict. Request context data
+            str. Resolved url or None
         """
 
-        super(ListModelMixin, self).get_context()
+        url = getattr(self, 'create_url', None)
+        if url:
+            return url_for(url)
 
-        self.context['columns'] = self.columns
-        self.context['get_value'] = self.get_value
-        self.context['get_column_name'] = self.get_column_name
-
-        return self.context
+        return None
 
     def get(self, current_page=1):
         """
