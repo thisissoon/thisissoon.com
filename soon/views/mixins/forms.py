@@ -286,7 +286,7 @@ class MultiFormMixin(BaseFormMixin):
             form.validate_on_submit()
 
             # So post has access to the subtmited form
-            self.form = form
+            self._form = form
 
         return form
 
@@ -356,7 +356,7 @@ class MultiFormSingleModelMixin(MultiFormMixin, SingleModelMixin):
             form.validate_on_submit()
 
             # So post has access to the subtmited form
-            self.form = form
+            self._form = form
 
         return form
 

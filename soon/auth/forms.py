@@ -33,6 +33,12 @@ class UserPasswordForm(ModelForm):
     def get_session():
         return db.session
 
+    def validate_password(form, field):
+        # Encrypt the password and update the form data so when the user
+        # is created in the DB an encrypted password is used
+        password = encrypt_password(field.data)
+        field.data = password
+
 
 class NewUserAdminForm(ModelForm):
 
