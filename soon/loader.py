@@ -12,7 +12,7 @@ from flask import Flask
 from flask.ext.security import SQLAlchemyUserDatastore
 from soon.exceptions import ImproperlyConfigured
 from soon.views.home import HomeView
-from soon.ext import collect, db, migrate, security
+from soon.ext import collect, db, gravatar, migrate, security
 from werkzeug import SharedDataMiddleware
 
 
@@ -122,6 +122,9 @@ def register_extenstions(app):
     from soon.auth.models import User, Role
     datastore = SQLAlchemyUserDatastore(db, User, Role)
     security.init_app(app, datastore=datastore)
+
+    # Gravatar
+    gravatar.init_app(app)
 
     # Admin
     from flask.ext.admin import Admin

@@ -25,3 +25,7 @@ security = Security()
 
 from flask.ext.collect import Collect
 collect = Collect()
+
+# Gravatar
+from flask.ext.gravatar import Gravatar
+gravatar = Gravatar(size=100)

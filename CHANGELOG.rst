@@ -8,6 +8,7 @@ Next Release
 - Feature: First / Last name fields for Users
 - Feature: Change password for existing Users
 - Feature: Logout Functionality
+- Feature: Gravatar Integration in CMS
 
 First Release - 2014.04.01.0
 ----------------------------
