@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
-.. module:: soon.generic.db.mixins
+.. module:: soon.db.mixins
    :synopsis: Helper mixins to extend default model functionality
 """
 

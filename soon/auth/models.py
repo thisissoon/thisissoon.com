@@ -7,7 +7,7 @@
 
 from flask.ext.security import RoleMixin, UserMixin
 from soon.ext import db
-from soon.generic.db.mixins import CreateUpdateMixin
+from soon.db.mixins import CreateUpdateMixin
 from sqlalchemy.dialects import postgresql
 from wtforms.fields import PasswordField, TextField
 
@@ -31,10 +31,16 @@ class User(db.Model, UserMixin, CreateUpdateMixin):
               'label': 'Password'})
 
     # Site Administrator
-    super_user = db.Column(db.Boolean(), default=False)
+    super_user = db.Column(
+        db.Boolean(),
+        default=False,
+        info={'label': 'Super User'})
 
     # User status
-    active = db.Column(db.Boolean(), default=False)
+    active = db.Column(
+        db.Boolean(),
+        default=False,
+        info={'label': 'Active'})
 
     # Tracking
     confirmed_at = db.Column(db.DateTime)
@@ -48,11 +54,30 @@ class User(db.Model, UserMixin, CreateUpdateMixin):
         info={'form_field_class': TextField})
     login_count = db.Column(db.Integer)
 
+    # Optional
+    first_name = db.Column(db.Unicode(150), info={'label': 'First Name'})
+    last_name = db.Column(db.Unicode(150), info={'label': 'Last Name'})
+
     # Relations
     roles = db.relationship(
         'Role',
         secondary='users_roles',
         backref=db.backref('users', lazy='dynamic'))
+
+    def __str__(self):
+        """
+        Human freindly representation of the object
+        """
+
+        return self.email
+
+    def __repr__(self):
+        return '<User: id={0.id!r}, email={0.email!r}, '\
+               'super_user={0.super_user!r}>'.format(self)
+
+    @property
+    def is_admin(self):
+        return self.super_user
 
 
 class Role(db.Model, RoleMixin, CreateUpdateMixin):

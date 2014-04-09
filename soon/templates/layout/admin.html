@@ -23,9 +23,17 @@
         </ul>
         {% endblock %}
         {% block menu_links %}
+        {% if current_user.is_authenticated() %}
         <ul class="nav pull-right">
-        {{ layout.menu_links() }}
+            <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{{ current_user.email | gravatar(size=20) }}" alt="{{ current_user }}"> {{ current_user }}<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="{{ url_for('admin.logout') }}">Logout</a></li>
+                </ul>
+            </li>
+            {{ layout.menu_links() }}
         </ul>
+        {% endif %}
         {% endblock %}
         {% block access_control %}
         {% endblock %}

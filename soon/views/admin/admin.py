@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
-.. module:: soon.generic.views.admin
+.. module:: soon.views.admin
    :synopsis: Base admin views
 """
 
@@ -10,12 +10,6 @@ from flask.ext import admin
 from flask.ext.admin import AdminIndexView, expose_plugview
 from flask.ext.login import current_user
 from flask.views import MethodView
-
-
-class BaseAdminView(admin.BaseView):
-
-    def is_accessible(self):
-        return current_user.is_authenticated()
 
 
 class AdminHomeView(AdminIndexView):

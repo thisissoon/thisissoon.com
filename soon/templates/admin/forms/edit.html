@@ -1,0 +1,20 @@
+{% extends 'admin/master.html' %}
+{% import 'admin/forms/macros.html' as macros with context %}
+
+{% block body %}
+    {{ super() }}
+    <h2>{% block h2 %}Edit {{ model.__name__ }}{% endblock %}</h2>
+    {% block instructions %}
+    <p>Make your changes and then click the <span class="label label-info">Save</span> button at the bottom of the form. Alternatively you can exit by clicking <span class="label">Cancel</span>{% if delete_url %} or delete this record by clicking the <span class="label label-important">Delete</span> button{% endif %}.</p>
+    {% endblock %}
+    {% call macros.form(form=form, action=submit_url) %}
+        {{ macros.form_fields(form) }}
+        {% call macros.form_controls() %}
+            {{ macros.save_button() }}
+            {% if delete_url %}
+                {{ macros.delete_button(delete_url) }}
+            {% endif %}
+            {{ macros.cancel_button(cancel_url) }}
+        {% endcall %}
+    {% endcall %}
+{% endblock %}
