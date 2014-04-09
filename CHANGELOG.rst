@@ -1,7 +1,7 @@
 Change Log
 ==========
 
-Next Release
+2014.04.09.0
 ------------
 
 - Feature: User Management in the CMS
