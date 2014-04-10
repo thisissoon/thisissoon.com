@@ -17,6 +17,9 @@ from wtforms_alchemy import model_form_factory
 
 ModelForm = model_form_factory(Form)
 
+file_required = FileRequired('Job Spec PDF required.')
+file_allowed = FileAllowed(['pdf', ], 'PDF Only')
+
 
 class JobForm(ModelForm):
 
@@ -29,8 +32,8 @@ class JobForm(ModelForm):
         field_args = {
             'spec': {
                 'validators': [
-                    FileRequired('Job Spec PDF required.'),
-                    FileAllowed(['pdf', ], 'PDF Only')]}}
+                    file_required,
+                    file_allowed]}}
 
     def validate_spec(form, field):
         """
@@ -38,19 +41,33 @@ class JobForm(ModelForm):
         relative path to the saved file.
         """
 
-        # Get filename and set relative path
-        f = form.spec.data
-        filename = secure_filename(f.filename)
-        rel = os.path.join('jobs', filename)
+        # If no data don't try to save the file
+        if field.data:
 
-        # Save the file to the file system
-        f.save(os.path.join(
-            current_app.config['MEDIA_ABS_DIR'],
-            rel))
+            # Get filename and set relative path
+            f = form.spec.data
+            filename = secure_filename(f.filename)
+            rel = os.path.join('jobs', filename)
 
-        # Set the data to be a relative path
-        field.data = rel
+            # Save the file to the file system
+            f.save(os.path.join(
+                current_app.config['MEDIA_ABS_DIR'],
+                rel))
+
+            # Set the data to be a relative path
+            field.data = rel
+
+        field.data = form._obj.spec
 
     @classmethod
     def get_session():
         return db.session
+
+
+class JobUpdateForm(JobForm):
+
+    def __init__(self, *args, **kwargs):
+        super(JobUpdateForm, self).__init__(*args, **kwargs)
+
+        # For updates a file is not required
+        self['spec'].validators = [file_allowed, ]
