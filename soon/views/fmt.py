@@ -5,6 +5,8 @@
    :synopsis: Methods for formatting output, for example True = Yes
 """
 
+import pytz
+
 from jinja2 import Markup
 
 
@@ -51,3 +53,16 @@ def bool_admin_fmt(view, value):
         value,
         true='<i class="icon-ok"></i>',
         false='<i class="icon-remove"></i>'))
+
+
+def datetime_fmt(view, value):
+    """
+    Render a sane date time value, for example: dd/mm/yyyy at HH:MM TZ
+
+    Args:
+        view (`flask.views.MethodView`): The executing view (self)
+        value (bool): The value to evaluate against
+    """
+
+    value = value.replace(tzinfo=pytz.utc)
+    return value.strftime('%d/%m/%Y at %H:%M %Z')

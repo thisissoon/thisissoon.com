@@ -10,6 +10,7 @@ from flask.ext.admin import expose_plugview
 from soon.ext import db
 from soon.jobs.forms import JobForm
 from soon.jobs.models import Job
+from soon.views.fmt import datetime_fmt
 from soon.views.admin import AdminBaseView
 from soon.views.admin.mixins import (
     AdminListMixin,
@@ -26,6 +27,10 @@ class JobAdminView(AdminBaseView):
         records_per_page = 30
         columns = ['title', 'created', 'updated']
         create_url = 'admin.jobs.create'
+        formatters = {
+            'created': datetime_fmt,
+            'updated': datetime_fmt
+        }
 
     @expose_plugview('/create')
     class create(AdminCreateFormMixin, MethodView):
