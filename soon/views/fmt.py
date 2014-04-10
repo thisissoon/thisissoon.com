@@ -57,7 +57,8 @@ def bool_admin_fmt(view, value):
 
 def datetime_fmt(view, value):
     """
-    Render a sane date time value, for example: dd/mm/yyyy at HH:MM TZ
+    Render a sane date time value, for example: dd/mm/yyyy at HH:MM TZ.
+    All values should be UTC.
 
     Args:
         view (`flask.views.MethodView`): The executing view (self)
@@ -65,4 +66,4 @@ def datetime_fmt(view, value):
     """
 
     value = value.replace(tzinfo=pytz.utc)
-    return value.strftime('%d/%m/%Y at %H:%M %Z')
+    return value.strftime('%d/%m/%Y at %I:%M%p %Z')

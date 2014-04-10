@@ -31,8 +31,12 @@
                 {% for column in columns %}
                 <td width="{{ 100 / columns|length }}%">{{ get_column_name(column) }}</td>
                 {% endfor %}
+                {% if update_url %}
                 <th width="0%"><i class="icon-edit"></i></th>
+                {% endif %}
+                {% if delete_url %}
                 <th width="0%"><i class="icon-trash"></i></th>
+                {% endif %}
             </tr>
         </thead>
         <tbody>
@@ -46,8 +50,12 @@
                 {% for column in columns %}
                 <td>{{ get_value(obj, column) }}</td>
                 {% endfor %}
+                {% if update_url %}
                 <td width="0%"><a href="{{ url_for("admin.users.edit", pk=obj.id) }}"><i class="icon-edit"></i></a></td>
-                <td width="0%"><a href="{{ url_for("admin.users.delete", pk=obj.id) }}"><i class="icon-trash"></i></a></td>
+                {% endif %}
+                {% if delete_url %}
+                <td width="0%"><a href="{{ url_for(delete_url, pk=obj.id) }}"><i class="icon-trash"></i></a></td>
+                {% endif %}
             </tr>
             {% endfor %}
         </tbody>

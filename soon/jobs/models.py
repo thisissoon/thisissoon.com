@@ -9,6 +9,8 @@ from flask.ext.login import current_user
 from flask_wtf.file import FileField
 from soon.ext import db
 from soon.db.mixins import CreateUpdateMixin
+from soon.jobs.events import job_after_delete
+from sqlalchemy import event
 
 
 class Job(db.Model, CreateUpdateMixin):
@@ -53,3 +55,6 @@ class Job(db.Model, CreateUpdateMixin):
 
     def __str__(self):
         return self.title
+
+
+event.listen(Job, 'after_delete', job_after_delete)

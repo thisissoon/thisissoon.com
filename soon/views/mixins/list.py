@@ -42,7 +42,10 @@ class ListModelMixin(SingleModelMixin, TemplateMixin):
         self.context['columns'] = self.columns
         self.context['get_value'] = self.get_value
         self.context['get_column_name'] = self.get_column_name
+
         self.context['create_url'] = self.get_create_url()
+        self.context['update_url'] = self.get_update_url()
+        self.context['delete_url'] = self.get_delete_url()
 
         return self.context
 
@@ -106,6 +109,22 @@ class ListModelMixin(SingleModelMixin, TemplateMixin):
             return url_for(url)
 
         return None
+
+    def get_update_url(self):
+        """
+        Returns a raw string to be used for url_for if `update_url` is set
+        on the class mixing in `ListModelMixin`
+        """
+
+        return getattr(self, 'update_url', None)
+
+    def get_delete_url(self):
+        """
+        Returns a raw string to be used for url_for if `delete_url` is set
+        on the class mixing in `ListModelMixin`
+        """
+
+        return getattr(self, 'delete_url', None)
 
     def get(self, current_page=1):
         """
