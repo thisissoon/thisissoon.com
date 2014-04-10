@@ -196,18 +196,15 @@ class MultiDeleteModelMixin(DeleteModelMixin):
         True.
         """
 
-        model = self.get_model()
         session = self.get_session()
-
-        ids = [int(id) for id in request.values.getlist('objects')]
-        objs = session.query(model).filter(model.id.in_(ids)).all()
+        objs = self.get_objects()
 
         for obj in objs:
             session.delete(obj)
 
         session.commit()  # Delete happens here
 
-        flash('{0} record(s) deleted.'.format(len(ids)), 'success')
+        flash('{0} record(s) deleted.'.format(len(objs)), 'success')
 
     def post(self):
         """
