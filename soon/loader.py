@@ -165,18 +165,21 @@ def register_blueprints(app):
         load_blueprint(app, blueprint)
 
 
-def register_uploads(app):
+def register_media(app):
     """
-    Register upload endpoints to be served by werkzeug in development,
+    Register media endpoints to be served by werkzeug in development,
     do not use for production.
 
     :param app: Flask application instance
     :type app: flask.app.Flask
     """
 
-    app.add_url_rule('/uploads/<filename>', 'uploads', build_only=True)
+    app.add_url_rule(
+        '{0}/<filename>'.format(app.config['MEDIA_URL']),
+        'media',
+        build_only=True)
     app.wsgi_app = SharedDataMiddleware(app.wsgi_app, {
-        '/uploads':  app.config['UPLOAD_DIR']
+        app.config['MEDIA_URL']:  app.config['MEDIA_ABS_DIR']
     })
 
 
@@ -205,7 +208,7 @@ def create_app(config=None):
 
     # Upload endooints - Only in debug
     if app.config['DEBUG']:
-        register_uploads(app)
+        register_media(app)
 
     # Register homepage
     app.add_url_rule('/', view_func=HomeView.as_view('home'))

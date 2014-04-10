@@ -35,6 +35,11 @@ BLUEPRINTS = [
     'soon.jobs',
 ]
 
-# Uploads
+# Media (Uploads etc)
 
-UPLOAD_DIR = os.path.join(BASE_DIR, '..', 'media')
+# URL to serve media from - used for DEBUG=True only
+MEDIA_URL = '/media'
+# Relative path used for storing paths in db
+MEDIA_REL_DIR = os.path.join('media')
+# Absaolute path for actually saving files
+MEDIA_ABS_DIR = os.path.join(BASE_DIR, '..', MEDIA_REL_DIR)

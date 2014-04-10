@@ -5,9 +5,10 @@
    :synopsis: Job models
 """
 
+from flask.ext.login import current_user
+from flask_wtf.file import FileField
 from soon.ext import db
 from soon.db.mixins import CreateUpdateMixin
-from wtforms.fields import FileField
 
 
 class Job(db.Model, CreateUpdateMixin):
@@ -21,6 +22,7 @@ class Job(db.Model, CreateUpdateMixin):
     user_id = db.Column(
         db.Integer,
         db.ForeignKey('user.id', ondelete='cascade'),
+        default=lambda: current_user.id,
         nullable=False)
 
     # Attributes

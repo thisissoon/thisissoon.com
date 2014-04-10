@@ -5,7 +5,7 @@
    :synopsis: Mixins for Flask pluggable views for creting objects
 """
 
-from flask import request, flash
+from flask import flash
 from soon.views.mixins.forms import SingleFormMixin
 from soon.views.mixins.models import SingleModelMixin
 
@@ -44,10 +44,9 @@ class CreateFormMixin(CreateMixin, SingleFormMixin):
         try:
             form = self._form
         except AttributeError:
-            form_class = self.get_form_class()
+            kls = self.get_form_class()
 
-            # Instantiate the form with only request values
-            form = form_class(request.values)
+            form = kls()
             form.validate_on_submit()
 
             self._form = form
