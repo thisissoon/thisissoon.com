@@ -1,6 +1,11 @@
 Change Log
 ==========
 
+2014.04.09.1
+------------
+
+- Hotfix: Updated mercs email to freelancers
+
 2014.04.09.0
 ------------
 
