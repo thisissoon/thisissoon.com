@@ -31,6 +31,9 @@ class UserAdminView(AdminBaseView):
         model = User
         records_per_page = 30
         columns = ['email', 'active', 'super_user', 'last_login_at']
+        create_url = 'admin.users.create'
+        update_url = 'admin.users.update'
+        delete_url = 'admin.users.delete'
         formatters = {
             'active': bool_admin_fmt,
             'super_user': bool_admin_fmt
@@ -48,8 +51,8 @@ class UserAdminView(AdminBaseView):
         success_url = 'admin.users.index'
         cancel_url = 'admin.users.index'
 
-    @expose_plugview('/edit/<int:pk>')
-    class edit(AdmminUpdateMultiFormMixin, MethodView):
+    @expose_plugview('/update/<int:pk>')
+    class update(AdmminUpdateMultiFormMixin, MethodView):
 
         model = User
         session = db.session

@@ -125,17 +125,17 @@ class UpdateModelWithFromMixin(object):
         try:
             return self._form
         except AttributeError:
-            form_class = self.get_form_class()
+            kls = self.get_form_class()
             obj = self.get_object()
 
             # When updating models we will need to pass the instance of the
             # object to the form
-            form = form_class(request.values, obj=obj)
+            form = kls(obj=obj)
             form.validate_on_submit()
 
             self._form = form
 
-        return form
+        return self._form
 
     def update(self):
         """

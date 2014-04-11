@@ -6,9 +6,11 @@
 """
 
 from flask.views import MethodView
-from soon.views.mixins.template import TemplateMixin
+from soon.jobs.models import Job
+from soon.views.mixins.list import ListModelMixin
 
 
-class HomeView(TemplateMixin, MethodView):
+class HomeView(ListModelMixin, MethodView):
 
+    model = Job
     template = 'home.html'
