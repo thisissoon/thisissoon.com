@@ -1,6 +1,10 @@
 Change Log
 ==========
 
+2014.04.11.3
+------------
+- Hotfix: Pass filenames into media urls for Jobs
+
 2014.04.11.2
 ------------
 - Hotfix: Render media URLs on the FE
