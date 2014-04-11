@@ -67,7 +67,7 @@ class AdminListMixin(ListModelMixin, AdminTemplateMixin):
 
         return self.context
 
-    def get(self, admin, current_page=1):
+    def get(self, admin, page=1):
         """
         Perform the regular get method as defined in `ListMixin` except
         add the the admin argument as an instance attribute so the
@@ -82,7 +82,7 @@ class AdminListMixin(ListModelMixin, AdminTemplateMixin):
         """
 
         self.admin = admin
-        return super(AdminListMixin, self).get(current_page=current_page)
+        return super(AdminListMixin, self).get(page=page)
 
 
 class AdminCreateFormMixin(CreateModelFormMixin, AdminTemplateMixin):

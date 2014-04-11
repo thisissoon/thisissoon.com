@@ -128,24 +128,14 @@
         </div>
         <div class="row" style="padding-bottom:20px;">
             <div class="col-md-3 hidden-sm visible-md visible-lg"></div>
-            <div class="col-md-4 col-xs-6">
-                <h4 class="underline">Junior Digital Designer</h4>
-                <p class="grey">We need the greatest grad ever or a designer with a couple of years experience looking to spread their wings.</p>
-                <p><a href="{{ url_for('static',filename='pdf/SOON_job_spec_junior_designer.pdf') }}" target="_blank">View details</a></p>
-            </div>
-            <div class="col-md-4 col-xs-6">
-                <h4 class="underline">Digital Designer</h4>
-                <p class="grey">We need an experienced digital designer to own the art direction and design of projects as well as tackling branding &amp; identity work.</p>
-                <p><a href="{{ url_for('static', filename='pdf/SOON_job_spec_digital_designer.pdf') }}" target="_blank">View details</a></p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3 hidden-sm visible-md visible-lg"></div>
-            <div class="col-md-4 col-xs-6">
-                <h4 class="underline">Front-end Developer</h4>
-                <p class="grey">We need an HTML/CSS/Javascript legend who wants to create interfaces for a new generation of digital services &amp; platforms.</p>
-                <p><a href="{{ url_for('static', filename='pdf/SOON_job_spec_front end dev.pdf') }}" target="_blank">View details</a></p>
-            </div>
+            {% for obj in objs %}
+                <div class="col-md-3 col-xs-6">
+                    <h4 class="underline">{{ obj.title }}</h4>
+                    <p class="grey">{{ obj.blurb }}</p>
+                    <p><a href="{{ url_for('media',filename=obj.spec) }}" target="_blank">View details</a></p>
+                </div>
+                {{ loop.cycle('', '<div class="col-md-3 hidden-sm visible-md visible-lg"></div>') }}
+            {% endfor %}
             <div class="col-md-4 col-xs-6">
                 <h4 class="underline">Freelancers</h4>
                 <p class="grey">We’re always keen to hear from great specialist freelancers, so please send your portfolio or details to:</p>

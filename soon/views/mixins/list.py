@@ -27,6 +27,18 @@ class ListModelMixin(SingleModelMixin, TemplateMixin):
             model = MyModel
     """
 
+    @property
+    def paginate_records(self):
+        """
+        Return if the resultset should be paginated or not from `paginate`
+        attribute if set.
+
+        Returns:
+            bool. Whether to paginate or not -- Default `False`
+        """
+
+        return getattr(self, 'paginate', False)
+
     def get_context(self):
         """
         Override the default `get_context` provided by `TemplateMixin`
@@ -39,7 +51,7 @@ class ListModelMixin(SingleModelMixin, TemplateMixin):
 
         super(ListModelMixin, self).get_context()
 
-        self.context['columns'] = self.columns
+        self.context['columns'] = self.get_columns()
         self.context['get_value'] = self.get_value
         self.context['get_column_name'] = self.get_column_name
 
@@ -73,6 +85,16 @@ class ListModelMixin(SingleModelMixin, TemplateMixin):
                 value = formatter(self, value)
 
         return value
+
+    def get_columns(self):
+        """
+        Returns columns list of `columns` is defined.
+
+        Returns:
+            list or None. List of column names
+        """
+
+        return getattr(self, 'columns', None)
 
     def get_column_name(self, name):
         """
@@ -122,28 +144,50 @@ class ListModelMixin(SingleModelMixin, TemplateMixin):
         """
         Returns a raw string to be used for url_for if `delete_url` is set
         on the class mixing in `ListModelMixin`
+
+        Returns:
+            str or None. Delete url
         """
 
         return getattr(self, 'delete_url', None)
 
-    def get(self, current_page=1):
+    def get_records_per_page(self):
+        """
+        Return the number of records per page to paginate by, if not set
+        the default value is 30 records per page.
+
+        Returns:
+            int. Number of records per page
+        """
+
+        return getattr(self, 'records_per_page', 30)
+
+    def get_objects(self, page=1):
+        """
+        Updates context to contain objs to iterate over.
+        """
+
+        model = self.get_model()
+
+        if self.paginate_records:
+            pages = model.query.paginate(
+                page,
+                self.get_records_per_page(),
+                False)
+            self.context['objs'] = pages.items
+            self.context['pages'] = pages
+        else:
+            self.context['objs'] = model.query.all()
+
+    def get(self, page=1):
         """
         Handle GET requests to views using this mixin rendering a list
         of records for the supplied model.
 
         Args:
-            current_page (int): Page number of objects to render
+            page (int): Page number of objects to render
         """
 
-        model = self.get_model()
-        records_per_page = getattr(self, 'records_per_page', 30)
-
-        pages = model.query.paginate(
-            current_page,
-            records_per_page,
-            False)
-
-        self.context['current_page'] = current_page
-        self.context['pages'] = pages
+        self.get_objects(page=page)
 
         return self.render()
