@@ -7,6 +7,7 @@
 
 import calendar
 import datetime
+import ntpath
 import os
 
 from flask import current_app
@@ -16,6 +17,12 @@ from werkzeug.datastructures import FileStorage
 
 
 class UploadFileField(FileField):
+
+    # Deleting orphans relates to updating a record with a new file, the
+    # existing attached file would become orphaned from its related record
+    # delete_orphans ensures the existing file is removed if it has an
+    # existing file attached to the obj
+    delete_orphans = True
 
     def __init__(self, upload_to=None, *args, **kwargs):
         """
@@ -30,6 +37,59 @@ class UploadFileField(FileField):
             self.upload_to = upload_to
 
         return super(UploadFileField, self).__init__(*args, **kwargs)
+
+    @property
+    def absolute_dir_path(self):
+        """
+        Returns the absolute path to the directory in which the file should
+        be written too.
+
+        Returns:
+            str. Path to directory
+
+        Raises:
+            NotImplementedError
+        """
+
+        config = current_app.config
+        path = getattr(self, 'absolute_base', config.get('MEDIA_ABS_DIR'))
+        if not path:
+            raise NotImplementedError(
+                'Unable to get an absolute path to save files to, either '
+                'define `absolute_base` or set `MEDIA_ABS_DIR` app '
+                'configuration value')
+
+        # If upload_to is set join the base with the upload_to directory
+        upload_to = getattr(self, 'upload_to', None)
+        if upload_to:
+            path = os.path.join(
+                path,
+                upload_to)
+
+        return path
+
+    @property
+    def relative_dir_path(self):
+        """
+        Returns the relative path of the directory, this is used for
+        storing relative paths in a DB rather than absolute ones. By default
+        this will be blank so the relative path for a file names `foo.jpg`
+        would be `foo.jpg`
+
+        Returns:
+            str. Relative path to file
+        """
+
+        path = getattr(self, 'relative_base', '')
+
+        # If upload_to is set join the base with the upload_to directory
+        upload_to = getattr(self, 'upload_to', None)
+        if upload_to:
+            path = os.path.join(
+                path,
+                upload_to)
+
+        return path
 
     def make_paths(self, obj):
         """
@@ -46,28 +106,11 @@ class UploadFileField(FileField):
             tuple. Realtive path, Absolute path, filename
         """
 
-        config = current_app.config
-        relative_base = getattr(self, 'realtive_base', config['MEDIA_REL_DIR'])
-        absolute_base = getattr(self, 'absolute_base', config['MEDIA_ABS_DIR'])
-
-        # upload_to is a relative path from the realtive_base
-        upload_to = getattr(self, 'upload_to', None)
-
-        # If upload_to is given update base paths to include the upload_to
-        # path
-        if upload_to:
-            absolute_base = os.path.join(
-                absolute_base,
-                upload_to)
-            relative_base = os.path.join(
-                relative_base,
-                upload_to)
-
         # Get filename
         filename = secure_filename(self.data.filename)
 
         absolute_path = os.path.join(
-            absolute_base,
+            self.absolute_dir_path,
             filename)
 
         if os.path.exists(absolute_path):
@@ -79,18 +122,18 @@ class UploadFileField(FileField):
             name, ext = os.path.splitext(filename)
 
             # build filename
-            filename = '{name}_{timestamp}.{ext}'.format(
+            filename = '{name}_{timestamp}{ext}'.format(
                 name=name,
                 timestamp=timestamp,
                 ext=ext)
 
             # Reset absolute_path to use the new filename
             absolute_path = os.path.join(
-                absolute_base,
+                self.absolute_dir_path,
                 filename)
 
         relative_path = os.path.join(
-            relative_base,
+            self.relative_dir_path,
             filename)
 
         return absolute_path, relative_path, filename
@@ -113,8 +156,33 @@ class UploadFileField(FileField):
             absolute_path, relative_path, filename = self.make_paths(obj)
             self.save(absolute_path)
 
+            if self.delete_orphans:
+                origional_value = getattr(obj, name)
+                if not origional_value is None \
+                        and not origional_value == relative_path:
+                    self.delete(origional_value)
+
             # Set field attribute to be value of the relative save path
             setattr(obj, name, relative_path)
+
+    def delete(self, relative_path):
+        """
+        Delete an existing file
+
+        Args:
+            relative (str): The path to the saved the file to delete
+        """
+
+        # Give us just the filename from the relative path
+        filename = ntpath.basename(relative_path)
+
+        # Generate absolute path to file
+        absolute_path = os.path.join(
+            self.absolute_dir_path,
+            filename)
+
+        if os.path.exists(absolute_path):
+            os.remove(absolute_path)
 
     def save(self, absolute_path):
         """

@@ -16,17 +16,16 @@ ModelForm = model_form_factory(Form)
 
 class JobForm(ModelForm):
 
+    file_required = FileRequired('Job Spec PDF required.')
+    file_allowed = FileAllowed(['pdf', ], 'PDF Only')
+
     class Meta:
         model = Job
         only = ['title', 'blurb', 'spec']
-        # WTForms-Alchemy adds default validators which are not required for
-        # File Fields so we HAVE to explicitly set the Validators for File
-        # Fields
-        field_args = {
-            'spec': {
-                'validators': [
-                    FileRequired('Job Spec PDF required.'),
-                    FileAllowed(['pdf', ], 'PDF Only')]}}
+
+    def __init__(self, *args, **kwargs):
+        super(JobForm, self).__init__(*args, **kwargs)
+        self['spec'].validators = [self.file_required, self.file_allowed]
 
     @classmethod
     def get_session():
@@ -37,3 +36,4 @@ class JobUpdateForm(JobForm):
 
     def __init__(self, *args, **kwargs):
         super(JobUpdateForm, self).__init__(*args, **kwargs)
+        self['spec'].validators = [self.file_allowed, ]
