@@ -1,6 +1,11 @@
 Change Log
 ==========
 
+2014.04.11.1
+------------
+
+- Hotfix Build media URLS in production but don't serve the files
+
 2014.04.11.0
 ------------
 
