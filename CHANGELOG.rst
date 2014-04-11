@@ -1,7 +1,7 @@
 Change Log
 ==========
 
-Next Release
+2014.04.11.0
 ------------
 
 - Feature: Jobs CMS
