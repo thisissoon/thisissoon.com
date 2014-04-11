@@ -178,9 +178,12 @@ def register_media(app):
         '{0}/<filename>'.format(app.config['MEDIA_URL']),
         'media',
         build_only=True)
-    app.wsgi_app = SharedDataMiddleware(app.wsgi_app, {
-        app.config['MEDIA_URL']:  app.config['MEDIA_ROOT']
-    })
+
+    # Only server from the app if in DEBUG
+    if app.config['DEBUG']:
+        app.wsgi_app = SharedDataMiddleware(app.wsgi_app, {
+            app.config['MEDIA_URL']:  app.config['MEDIA_ROOT']
+        })
 
 
 def create_app(config=None):
@@ -206,9 +209,8 @@ def create_app(config=None):
     # Dynamically load blueprints
     register_blueprints(app)
 
-    # Upload endooints - Only in debug
-    if app.config['DEBUG']:
-        register_media(app)
+    # Media endooints
+    register_media(app)
 
     # Register homepage
     app.add_url_rule('/', view_func=HomeView.as_view('home'))
