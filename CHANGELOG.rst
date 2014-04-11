@@ -1,6 +1,10 @@
 Change Log
 ==========
 
+2014.04.11.4
+------------
+- Hotfix: Job variables in templates
+
 2014.04.11.3
 ------------
 - Hotfix: Pass filenames into media urls for Jobs
