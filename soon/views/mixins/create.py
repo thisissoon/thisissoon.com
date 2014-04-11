@@ -86,3 +86,27 @@ class CreateModelFormMixin(CreateModelMixin, CreateFormMixin):
         self.context['model'] = self.get_model()
 
         return self.context
+
+    def create(self, data):
+        """
+        Creates new object from from data bu populating a blank object
+        of the defined model.
+
+        Args:
+            data (dict): Data to be used for model creation, key: value
+
+        Raises:
+            NotImplementedError
+        """
+
+        session = self.get_session()
+        model = self.get_model()
+        form = self.get_form()
+
+        obj = model()
+        form.populate_obj(obj)
+
+        session.add(obj)
+        session.commit()
+
+        flash('New record created.', 'success')
