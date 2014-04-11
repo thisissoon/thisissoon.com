@@ -8,7 +8,7 @@
 from flask.ext.login import current_user
 from soon.db.mixins import CreateUpdateMixin
 from soon.ext import db
-from soon.fields import UploadFileField
+from soon.jobs.fields import UploadJobSpecField
 from soon.jobs.events import job_after_delete
 from sqlalchemy import event
 
@@ -43,7 +43,7 @@ class Job(db.Model, CreateUpdateMixin):
         nullable=False,
         info={
             'label': 'Spec (PDF)',
-            'form_field_class': UploadFileField})
+            'form_field_class': UploadJobSpecField})
 
     # Relations
     user = db.relationship(
