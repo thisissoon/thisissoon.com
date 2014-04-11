@@ -17,6 +17,20 @@ from werkzeug.datastructures import FileStorage
 
 class UploadFileField(FileField):
 
+    def __init__(self, upload_to=None, *args, **kwargs):
+        """
+        Overrides constructor method of `FileField` allowing `UploadFileField`
+        to take extra arguments.
+
+        Kwargs:
+            upload_to (str): Relative path to upload files to
+        """
+
+        if upload_to:
+            self.upload_to = upload_to
+
+        return super(UploadFileField, self).__init__(*args, **kwargs)
+
     def make_paths(self, obj):
         """
         Returns built paths for saving to the file system, storing a relative
