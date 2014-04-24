@@ -5,12 +5,11 @@
    :synopsis: Homepage Views
 """
 
-from flask.views import MethodView
+from flask.ext.velox.views.sqla.model import ModelListView
 from soon.jobs.models import Job
-from soon.views.mixins.list import ListModelMixin
 
 
-class HomeView(ListModelMixin, MethodView):
-
+class HomeView(ModelListView):
     model = Job
     template = 'home.html'
+    paginate = False

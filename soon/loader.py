@@ -12,7 +12,7 @@ from flask import Flask
 from flask.ext.security import SQLAlchemyUserDatastore
 from soon.exceptions import ImproperlyConfigured
 from soon.views.home import HomeView
-from soon.ext import collect, db, gravatar, migrate, security
+from soon.ext import collect, db, gravatar, migrate, security, velox
 from werkzeug import SharedDataMiddleware
 
 
@@ -80,13 +80,9 @@ def load_blueprint(app, blueprint):
     :type blueprint: str
     """
 
-    try:
-        module = __import__(
-            '{0}.routes'.format(blueprint),
-            fromlist=['soon'])
-    except ImportError:
-        raise ImproperlyConfigured(
-            'routes.py not defined for {0} blueprint.'.format(blueprint))
+    module = __import__(
+        '{0}.routes'.format(blueprint),
+        fromlist=['soon'])
 
     try:
         for route, view in module.routes:
@@ -128,7 +124,7 @@ def register_extenstions(app):
 
     # Admin
     from flask.ext.admin import Admin
-    from soon.views.admin import AdminHomeView
+    from soon.views.admin.home import AdminHomeView
 
     global admin
 
@@ -140,6 +136,9 @@ def register_extenstions(app):
 
     # Static Collect
     collect.init_app(app)
+
+    # Velox
+    velox.init_app(app)
 
 
 def register_blueprints(app):

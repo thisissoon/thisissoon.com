@@ -1,44 +1,29 @@
 # -*- coding: utf-8 -*-
 
 """
-.. module:: soon.views.admin.home
-   :synopsis: Views for the admin homepage
+.. module:: soon.views.admin
+   :synopsis: Base admin views
 """
 
-from flask import redirect, request, url_for
-from flask.ext.admin import AdminIndexView, expose_plugview
+from flask.ext import admin
+from flask.ext.admin import expose_plugview
 from flask.ext.login import logout_user
-from flask.views import MethodView
+from flask_velox.admin.views.forms import AdminFormView
+from flask_velox.views.http import RedirectView
+from soon.auth.forms import AuthenticationForm
 
 
-class AdminHomeView(AdminIndexView):
+class AdminHomeView(admin.AdminIndexView):
 
     @expose_plugview('/')
-    class index(MethodView):
-
-        def get_form(self, values=None):
-            # Due to circular import issues this import had to be
-            # isolated here
-            from soon.auth.forms import AuthenticationForm
-            return AuthenticationForm(values)
-
-        def get(self, admin):
-            form = self.get_form()
-            return admin.render('admin/home.html', **{
-                'form': form
-            })
-
-        def post(self, admin):
-            form = self.get_form(request.values)
-            if form.validate():
-                return redirect(url_for('admin.index'))
-            return admin.render('admin/home.html', **{
-                'form': form
-            })
+    class index(AdminFormView):
+        form = AuthenticationForm
+        template = 'admin/home.html'
+        redirect_url_rule = 'admin.index'
 
     @expose_plugview('/logout')
-    class logout(MethodView):
+    class logout(RedirectView):
+        rule = '.index'
 
-        def get(self, admin):
+        def pre_dispatch(self):
             logout_user()
-            return redirect(url_for('admin.index'))
