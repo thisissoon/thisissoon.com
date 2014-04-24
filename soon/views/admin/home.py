@@ -19,7 +19,7 @@ class AdminHomeView(admin.AdminIndexView):
     class index(AdminFormView):
         form = AuthenticationForm
         template = 'admin/home.html'
-        redirect_url_rule = 'admin.index'
+        redirect_url_rule = '.index'
 
     @expose_plugview('/logout')
     class logout(RedirectView):
