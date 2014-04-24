@@ -8,8 +8,8 @@
 from flask.ext import admin
 from flask.ext.admin import expose_plugview
 from flask.ext.login import logout_user
-from flask_velox.admin.views.forms import AdminFormView
-from flask_velox.views.http import RedirectView
+from flask.ext.velox.admin.views.forms import AdminFormView
+from flask.ext.velox.views.http import RedirectView
 from soon.auth.forms import AuthenticationForm
 
 

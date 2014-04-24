@@ -5,7 +5,7 @@
    :synopsis: Homepage Views
 """
 
-from flask.ext.velox.views.sqla.model import ModelListView
+from flask.ext.velox.views.sqla.read import ModelListView
 from soon.jobs.models import Job
 
 
