@@ -5,70 +5,63 @@
    :synopsis: Flask super admin integration for package blueprint
 """
 
-from flask.views import MethodView
-from flask.ext.admin import expose_plugview
+from flask.ext.login import current_user
+from flask.ext.admin import BaseView, expose_plugview
+from flask.ext.velox.formatters import bool_admin_formatter
+from flask.ext.velox.admin.views.sqla import forms
+from flask.ext.velox.admin.views.sqla import read
+from flask.ext.velox.admin.views.sqla.delete import (
+    AdminDeleteObjectView,
+    AdminMultiDeleteObjectView)
+from soon.ext import db
 from soon.auth.forms import (
     NewUserAdminForm,
     UpdateUserAdminForm,
     UserPasswordForm)
 from soon.auth.models import User
-from soon.ext import db
-from soon.views.admin import AdminBaseView
-from soon.views.admin.mixins import (
-    AdminListMixin,
-    AdminCreateFormMixin,
-    AdmminUpdateMultiFormMixin,
-    AdminMultiDeleteMixin)
-from soon.views.fmt import bool_admin_fmt
 
 
-class UserAdminView(AdminBaseView):
+class UserAdminView(BaseView):
+
+    def is_accessible(self):
+        if current_user.is_authenticated() and current_user.is_admin:
+            return True
+        return False
 
     @expose_plugview('/')
-    @expose_plugview('/<int:current_page>')
-    class index(AdminListMixin, MethodView):
-
+    class index(read.AdminModelTableView):
         model = User
-        records_per_page = 30
+        paginate = True
         columns = ['email', 'active', 'super_user', 'last_login_at']
-        create_url = 'admin.users.create'
-        update_url = 'admin.users.update'
-        delete_url = 'admin.users.delete'
         formatters = {
-            'active': bool_admin_fmt,
-            'super_user': bool_admin_fmt
+            'active': bool_admin_formatter,
+            'super_user': bool_admin_formatter
         }
-        with_selected = [
-            ('Delete', 'admin.users.delete'),
-        ]
+        with_selected = {
+            'Delete': '.multi_delete',
+        }
 
     @expose_plugview('/create')
-    class create(AdminCreateFormMixin, MethodView):
-
+    class create(forms.AdminCreateModelView):
         model = User
-        form_class = NewUserAdminForm
+        form = NewUserAdminForm
         session = db.session
-        success_url = 'admin.users.index'
-        cancel_url = 'admin.users.index'
 
-    @expose_plugview('/update/<int:pk>')
-    class update(AdmminUpdateMultiFormMixin, MethodView):
-
+    @expose_plugview('/update/<int:id>')
+    class update(forms.AdminUpdateMultiFormView):
         model = User
         session = db.session
-        success_url = 'admin.users.index'
-        cancel_url = 'admin.users.index'
-        delete_url = 'admin.users.delete'
         forms = [
             ('Change Password', UserPasswordForm),
             ('Update User', UpdateUserAdminForm),
         ]
 
-    @expose_plugview('/delete')
-    @expose_plugview('/delete/<int:pk>')
-    class delete(AdminMultiDeleteMixin, MethodView):
-
+    @expose_plugview('/delete/<int:id>')
+    class delete(AdminDeleteObjectView):
         model = User
         session = db.session
-        success_url = 'admin.users.index'
-        cancel_url = 'admin.users.index'
+
+    @expose_plugview('/delete')
+    class multi_delete(AdminMultiDeleteObjectView):
+        model = User
+        session = db.session

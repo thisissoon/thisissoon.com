@@ -13,6 +13,7 @@ from flask.ext.wtf import Form
 from soon.auth.models import User
 from soon.ext import db
 from wtforms_alchemy import model_form_factory
+from wtforms import TextField
 from wtforms.fields import PasswordField
 from wtforms.validators import Required, EqualTo, ValidationError
 
@@ -74,13 +75,9 @@ class UpdateUserAdminForm(ModelForm):
         return db.session
 
 
-class AuthenticationForm(ModelForm):
-
-    class Meta:
-        model = User
-        only = ['email', 'password']
-        # We don't care if the email exists as this is an authentication form
-        unique_validator = lambda **kwargs: lambda *args, **kwargs: True
+class AuthenticationForm(Form):
+    email = TextField()
+    password = PasswordField()
 
     def validate_password(form, field):
         user = db.session.query(User).filter_by(email=form.email.data).first()

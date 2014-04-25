@@ -29,3 +29,7 @@ collect = Collect()
 # Gravatar
 from flask.ext.gravatar import Gravatar
 gravatar = Gravatar(size=100)
+
+# Velox
+from flask.ext.velox import Velox
+velox = Velox()

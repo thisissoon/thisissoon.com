@@ -22,7 +22,7 @@ def job_after_delete(mapper, connection, target):
     """
 
     path = os.path.join(
-        current_app.config['MEDIA_ABS_DIR'],
+        current_app.config['MEDIA_ROOT'],
         target.spec)
 
     if os.path.exists(path):

@@ -128,11 +128,11 @@
         </div>
         <div class="row" style="padding-bottom:20px;">
             <div class="col-md-3 hidden-sm visible-md visible-lg"></div>
-            {% for obj in objs %}
+            {% for object in objects %}
                 <div class="col-md-4 col-xs-6">
-                    <h4 class="underline">{{ obj.title }}</h4>
-                    <p class="grey">{{ obj.blurb }}</p>
-                    <p><a href="{{ url_for('media', filename=obj.spec) }}" target="_blank">View details</a></p>
+                    <h4 class="underline">{{ object.title }}</h4>
+                    <p class="grey">{{ object.blurb }}</p>
+                    <p><a href="{{ url_for('media', filename=object.spec) }}" target="_blank">View details</a></p>
                 </div>
                 {% if loop.index % 2 == 0 %}
                     </div>
