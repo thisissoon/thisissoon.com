@@ -1,6 +1,10 @@
 Change Log
 ==========
 
+Next Release
+------------
+- Feature: Integrated Flask-Velox
+
 2014.04.11.4
 ------------
 - Hotfix: Job variables in templates
