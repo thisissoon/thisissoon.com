@@ -5,7 +5,7 @@
     :synopsis: Custom WTForm fields specific to Jobs
 """
 
-from soon.fields import UploadFileField
+from flask.ext.velox.fields import UploadFileField
 
 
 class UploadJobSpecField(UploadFileField):

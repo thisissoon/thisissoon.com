@@ -45,11 +45,6 @@ class Job(db.Model, CreateUpdateMixin):
             'label': 'Spec (PDF)',
             'form_field_class': UploadJobSpecField})
 
-    # Relations
-    user = db.relationship(
-        'User',
-        backref=db.backref('jobs', lazy='dynamic'))
-
     def __repr__(self):
         return '<Job: id={0.id!r} title={0.title!r}>'.format(self)
 

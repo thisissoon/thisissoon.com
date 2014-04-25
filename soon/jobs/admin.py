@@ -5,64 +5,58 @@
    :synopsis: Flask super admin integration for jobs blueprint
 """
 
-from flask.views import MethodView
-from flask.ext.admin import expose_plugview
+from flask.ext.login import current_user
+from flask.ext.admin import BaseView, expose_plugview
+from flask.ext.velox.admin.views.sqla.read import AdminModelTableView
+from flask.ext.velox.admin.views.sqla.forms import (
+    AdminCreateModelView,
+    AdminUpdateModelView)
+from flask.ext.velox.admin.views.sqla.delete import (
+    AdminDeleteObjectView,
+    AdminMultiDeleteObjectView)
+from flask.ext.velox.formatters import datetime_formatter
 from soon.ext import db
 from soon.jobs.forms import JobForm, JobUpdateForm
 from soon.jobs.models import Job
-from soon.views.fmt import datetime_fmt
-from soon.views.admin import AdminBaseView
-from soon.views.admin.mixins import (
-    AdminListMixin,
-    AdminCreateFormMixin,
-    AdminUpdateFormMixin,
-    AdminMultiDeleteMixin)
 
 
-class JobAdminView(AdminBaseView):
+class JobAdminView(BaseView):
+
+    def is_accessible(self):
+        if current_user.is_authenticated() and current_user.is_admin:
+            return True
+        return False
 
     @expose_plugview('/')
-    @expose_plugview('/<int:current_page>')
-    class index(AdminListMixin, MethodView):
-
+    class index(AdminModelTableView):
         model = Job
-        records_per_page = 30
         columns = ['title', 'created', 'updated']
-        create_url = 'admin.jobs.create'
-        update_url = 'admin.jobs.update'
-        delete_url = 'admin.jobs.delete'
         formatters = {
-            'created': datetime_fmt,
-            'updated': datetime_fmt
+            'created': datetime_formatter,
+            'updated': datetime_formatter
         }
-        with_selected = [
-            ('Delete', 'admin.jobs.delete'),
-        ]
+        with_selected = {
+            'Delete': '.delete_multi',
+        }
 
     @expose_plugview('/create')
-    class create(AdminCreateFormMixin, MethodView):
-
+    class create(AdminCreateModelView):
         model = Job
-        form_class = JobForm
+        form = JobForm
         session = db.session
-        success_url = 'admin.jobs.index'
-        cancel_url = 'admin.jobs.index'
 
-    @expose_plugview('/update/<int:pk>')
-    class update(AdminUpdateFormMixin, MethodView):
-
+    @expose_plugview('/update/<int:id>')
+    class update(AdminUpdateModelView):
         model = Job
         session = db.session
-        form_class = JobUpdateForm
-        success_url = 'admin.jobs.index'
-        cancel_url = 'admin.jobs.index'
-        delete_url = 'admin.jobs.delete'
+        form = JobUpdateForm
+
+    @expose_plugview('/delete/<int:id>')
+    class delete(AdminDeleteObjectView):
+        model = Job
+        session = db.session
 
     @expose_plugview('/delete')
-    @expose_plugview('/delete/<int:pk>')
-    class delete(AdminMultiDeleteMixin, MethodView):
-
+    class delete_multi(AdminMultiDeleteObjectView):
         model = Job
         session = db.session
-        success_url = 'admin.jobs.index'
-        cancel_url = 'admin.jobs.index'
