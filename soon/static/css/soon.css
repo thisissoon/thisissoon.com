@@ -42,7 +42,7 @@ em {font-style:normal;background:#ffff0b;padding:0px;margin:0px;}
   padding-bottom:15px;
   margin-bottom:15px;}
 .white {border-bottom:1px solid #999;}
-.grey {color:#999999;}
+.small {opacity:0.7;}
 
 #map { width:100%;height:400px; }
 
@@ -82,12 +82,17 @@ em {font-style:normal;background:#ffff0b;padding:0px;margin:0px;}
   padding-top:80px !important;
   background-color: #ffff0b;
 }
-#slide4 {
-  background-color: #ebf0f1;
-}
+
+/* case studies */
+#slide4 {background-color: #ebf0f1;}
 #slide4 .carousel-inner {top:-20px;}
-#slide4 a {font-size:1.7em;font-family: 'Nixie One', sans-serif; font-weight:normal;color:#000;text-decoration: none;background: #ffff0b;padding:3px;}
+#slide4 a {font-size:1em;font-weight:normal;color:#000;text-decoration: none;background: #ffff0b;padding:3px;}
 #slide4 a:hover {color:#fff;text-decoration: none;background: #000}
+#slide4 span.left, span.right {position:absolute;width:48px;height:48px;display:block;}
+#slide4 span.left {right:50px;bottom:150px;background:url('../img/left.png') 0px 0px no-repeat !important;}
+#slide4 span.right {right:0px;bottom:150px;background:url('../img/right.png') 0px 0px no-repeat !important;}
+#slide4 h3.counter {position:absolute;font-size:3em;}
+#slide4 h2 {font-size:2.7em;padding-bottom:0;}
 
 #slide5 {
   padding-top:80px !important;
@@ -98,12 +103,45 @@ em {font-style:normal;background:#ffff0b;padding:0px;margin:0px;}
   background-color: #3b3b3b;
 }
 
+/* slide7 about */
+.about {
+  background:url('../img/wall.png') 0 -163px repeat-x;
+}
+.fred, .alex, .greg, .chris {
+  display:block;
+  height:240px;
+}
+.fred {
+  background:url('../img/fred.png') 140px -26px no-repeat;
+}
+.alex {
+  background:url('../img/alex.png') 140px -26px no-repeat;
+}
+.greg {
+  background:url('../img/greg.png') 140px -26px no-repeat;
+}
+.chris {
+  background:url('../img/chris.png') 140px -20px no-repeat;
+}
 #slide7 {
+  padding-top:80px !important;
+  padding-bottom:0px !important;
+}
+#slide7 h2 {width:300px !important;}
+#slide7 h4.underline {width:125px;}
+#slide7 a:hover {color:#000;text-decoration: none;background: #fff}
+#slide7 span.left, span.right {position:absolute;width:48px;height:48px;display:block;}
+#slide7 span.left {left:10px;bottom:70px;background:url('../img/left.png') 0px 0px no-repeat !important;}
+#slide7 span.right {left:60px;bottom:70px;background:url('../img/right.png') 0px 0px no-repeat !important;}
+#slide7 h3.counter {position:absolute;font-size:3em;}
+
+#slide8 {
   padding-top:80px !important;
   background-color: #000000;
 }
-#slide7 a:hover {color:#000;text-decoration: none;background: #fff}
+#slide8 a:hover {color:#000;text-decoration: none;background: #fff}
 
+a.cycle {background:transparent !important}
 
 @media (min-width: 992px)
 {
@@ -116,7 +154,8 @@ em {font-style:normal;background:#ffff0b;padding:0px;margin:0px;}
   #slide4,
   #slide5,
   #slide6,
-  #slide7 {
+  #slide7,
+  #slide8 {
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-position: 40px 220px !important;
@@ -150,8 +189,21 @@ em {font-style:normal;background:#ffff0b;padding:0px;margin:0px;}
     background-image: url(../img/soon_black.png);
   }
   #slide4 .carousel-inner {top:-40px;}
-  #slide4 a {font-size:3em !important;font-family: 'Nixie One', sans-serif; font-weight:normal;color:#000;text-decoration: none;background: #ffff0b;padding:3px;}
   #slide4 p {width:60% !important;padding-top: 10px;}
+
+  #slide4 span.left {
+    right:130px;
+    bottom:120px;
+  }
+  #slide4 span.right {
+    right:78px;
+    bottom:120px;
+  }
+
+  #slide4 h3.counter {
+    right:0px;
+    bottom:115px;
+  }
 
   #slide5 {
     padding-top:100px !important;
@@ -164,14 +216,41 @@ em {font-style:normal;background:#ffff0b;padding:0px;margin:0px;}
     padding-top:100px !important;
     background-image: url(../img/soon_white.png);
   }
+
+  /* slide7 about */
+  .about {
+    background:url('../img/wall.png') 0 -163px repeat-x;
+  }
+  .fred, .alex, .greg, .chris {
+    display:block;
+    height:640px;
+  }
+  .fred {
+    background:url('../img/fred.png') -30px 113px no-repeat;
+  }
+  .alex {
+    background:url('../img/alex.png') -20px 113px no-repeat;
+  }
+  .greg {
+    background:url('../img/greg.png') -30px 113px no-repeat;
+  }
+  .chris {
+    background:url('../img/chris.png') -20px 113px no-repeat;
+  }
   #slide7 {
+    padding-top:100px !important;
+    padding-bottom:0px !important;
+    background-image: url(../img/soon_black.png);
+  }
+
+  #slide8 {
     padding-top:100px !important;
     padding-bottom:450px !important;
     background-image: url(../img/soon_white.png);
   }
-  #slide7 p, #slide7 h4 {font-size: 0.9em; line-height: 1.8em; font-weight: normal}
+  #slide8 p, #slide8 h4 {font-size: 0.9em; line-height: 1.8em; font-weight: normal}
 
-  .carousel {height:480px !important;}
+  .carousel {}
   .carousel-inner img {padding-left:280px;}
 
 }

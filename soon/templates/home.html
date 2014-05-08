@@ -30,7 +30,7 @@
                 <div class="col-xs-12 col-sm-9">
                     <h2>We can help you be more digital<span class="grey">*</span></h2>
                     <p class="intro">Digital isn’t about technology any more. It’s your shop window, brochure, customer services and marketing departments. And it is becoming part of everyone’s products &amp; services.</p>
-                    <p class="grey">*we don’t like the word “digital”, but it’s the word people use. Ask us and we’ll tell you why.</p>
+                    <p class="small">*we don’t like the word “digital”, but it’s the word people use. Ask us and we’ll tell you why.</p>
                 </div>
             </div>
         </div>
@@ -48,7 +48,7 @@
         </div>
         <div class="row">
             <div class="col-md-3 hidden-sm visible-md visible-lg"></div>
-            <div class="col-md-2 col-xs-6">
+            <div class="col-md-2 col-xs-6" style="height:300px;">
                 <h3>1</h3>
                 <h4 class="underline">Strategy</h4>
                 <ul>
@@ -58,7 +58,7 @@
                     <li>Digital consumer research</li>
                 </ul>
             </div>
-            <div class="col-md-2 col-xs-6">
+            <div class="col-md-2 col-xs-6" style="height:300px;">
                 <h3>2</h3>
                 <h4 class="underline">Branding</h4>
                 <ul>
@@ -68,7 +68,7 @@
                     <li>Content guidelines</li>
                 </ul>
             </div>
-            <div class="col-md-2 col-xs-6">
+            <div class="col-md-2 col-xs-6" style="height:320px;">
                 <h3>3</h3>
                 <h4 class="underline">Development</h4>
                 <ul>
@@ -78,7 +78,7 @@
                     <li>Prototyping</li>
                 </ul>
             </div>
-            <div class="col-md-2 col-xs-6">
+            <div class="col-md-2 col-xs-6" style="height:320px;">
                 <h3>4</h3>
                 <h4 class="underline">Physical</h4>
                 <ul>
@@ -95,20 +95,30 @@
 <a id="projects" /></a>
 <div id="slide4" class="slide" data-stellar-background-ratio="0.5">
     <div class="container">
-        <div class="carousel slide" data-ride="carousel" id="myCarousel">
+        <div class="carousel slide" data-ride="carousel" id="folio">
             <div class="carousel-inner">
-                <div class="folio-1 item active"><img src="{{ url_for('static', filename='img/1_RA.png') }}"></div>
-                <div class="folio-2 item"><img src="{{ url_for('static', filename='img/2_RA.png') }}"></div>
-                <div class="folio-3 item"><img src="{{ url_for('static', filename='img/3_RA.png') }}"></div>
+                <div class="folio-1 item active">
+                    <img src="{{ url_for('static', filename='img/1_RA.png') }}">
+                    <div class="col-md-3 hidden-sm visible-md visible-lg"></div>
+                    <div class="col-md-9 col-xs-9">
+                        <h2>Resident Advisor</h2>
+                        <p class="grey">We have just launched a new identity and web-platform for online electronic music magazine Resident Advisor</p>
+                        <a href="#">Read the full case study</a>
+                    </div>
+                </div>
+                <div class="folio-2 item">
+                    <img src="{{ url_for('static', filename='img/2_RA.png') }}">
+                    <div class="col-md-3 hidden-sm visible-md visible-lg"></div>
+                    <div class="col-md-9 col-xs-9">
+                        <h2>Resident Advisor</h2>
+                        <p class="grey">We have just launched a new identity and web-platform for online electronic music magazine Resident Advisor</p>
+                        <a href="#">Read the full case study</a>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3 hidden-sm visible-md visible-lg"></div>
-            <div class="col-md-9 col-xs-9">
-                <a href="http://www.residentadvisor.net" target="_blank">www.residentadvisor.net</a>
-                <p class="grey">We have just launched a new identity and web-platform for online electronic music magazine Resident Advisor<br />
-                Launched: January 2014</p>
-            </div>
+            <h3 class="counter hidden-sm visible-md visible-lg">1/2</h3>
+            <a class="cycle" href="#folio" data-slide="prev"><span class="left"></span></a>
+            <a class="cycle" href="#folio" data-slide="next"><span class="right"></span></a>
         </div>
     </div>
 </div>
@@ -149,7 +159,83 @@
     </div>
 </div>
 
-<div id="slide7" class="slide" data-stellar-background-ratio="0.5">
+<a id="about" /></a>
+<div class="about">
+    <div id="slide7" class="slide" data-stellar-background-ratio="0.5">
+        <div class="container panel-3">
+            <div class="row">
+                <div class="col-md-3 hidden-sm visible-md visible-lg"></div>
+                <div class="col-md-9 col-xs-9">
+                    <h2>About us</h2>
+                </div>
+            </div>
+            <div class="row hidden-sm visible-md visible-lg">
+                <div class="col-md-3 hidden-sm visible-md visible-lg"></div>
+                <div class="fred col-md-2 col-xs-12">
+                    <h4 class="underline">Fred Flade</h4>
+                    <p>Creative Director
+                        <br />Co-Founder</p>
+                </div>
+                <div class="alex col-md-2 col-xs-12">
+                    <h4 class="underline">Alex Light</h4>
+                    <p>Managing Director
+                        <br />Co-Founder</p>
+                </div>
+                <div class="greg col-md-2 col-xs-12">
+                    <h4 class="underline">Greg Reed</h4>
+                    <p>Technical Director
+                        <br />Co-Founder</p>
+                </div>
+                <div class="chris col-md-2 col-xs-12">
+                    <h4 class="underline">Chris Reeves</h4>
+                    <p>Senior Developer</p>
+                </div>
+            </div>
+            <div class="row visible-xs">
+                <div class="carousel slide" data-ride="carousel" id="people">
+                    <div class="carousel-inner">
+                        <div class="people-1 item active">
+                            <div class="col-md-3 hidden-sm visible-md visible-lg"></div>
+                            <div class="fred col-md-2 col-xs-12">
+                                <h4 class="underline">Fred Flade</h4>
+                                <p>Creative Director
+                                    <br />Co-Founder</p>
+                            </div>
+                        </div>
+                        <div class="people-2 item">
+                            <div class="col-md-3 hidden-sm visible-md visible-lg"></div>
+                            <div class="alex col-md-2 col-xs-12">
+                                <h4 class="underline">Alex Light</h4>
+                                <p>Managing Director
+                                    <br />Co-Founder</p>
+                            </div>
+                        </div>
+                        <div class="people-3 item">
+                            <div class="col-md-3 hidden-sm visible-md visible-lg"></div>
+                            <div class="greg col-md-2 col-xs-12">
+                                <h4 class="underline">Greg Reed</h4>
+                                <p>Technical Director
+                                    <br />Co-Founder</p>
+                            </div>
+                        </div>
+                        <div class="people-4 item">
+                            <div class="col-md-3 hidden-sm visible-md visible-lg"></div>
+                            <div class="chris col-md-2 col-xs-12">
+                                <h4 class="underline">Chris Reeves</h4>
+                                <p>Senior Developer</p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <a class="cycle" href="#people" data-slide="prev"><span class="left"></span></a>
+                    <a class="cycle" href="#people" data-slide="next"><span class="right"></span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="slide8" class="slide" data-stellar-background-ratio="0.5">
     <div class="container contact">
         <div class="row">
             <div class="col-md-3 hidden-sm visible-md visible-lg">
