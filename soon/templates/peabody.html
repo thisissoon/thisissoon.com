@@ -1,0 +1,210 @@
+{%- extends 'layout/base.html' -%}
+
+{%- block title -%}Peabody Sales{%- endblock -%}
+
+{%- block logo -%}<a class="navbar-brand" href="/"><img src="{{ url_for('static', filename='img/soon_black.png') }}" alt="SOON_" width="113px" height="44px" /></a>{%- endblock -%}
+
+{%- block javascript_tail %}
+<script src="{{ url_for('static', filename='js/soon.js') }}"></script>
+{% endblock -%}
+
+{%- block id -%}peabody{%- endblock -%}
+
+{%- block nav -%}
+<div class="navbar-collapse collapse col-xs-12 col-sm-12">
+    <ul class="nav navbar-nav navbar-right">
+        <li><a href="/">Back</a></li>
+        <li><a href="/residentadvisor">Resident Advisor</a></li>
+    </ul>
+</div>
+{%- endblock -%}
+
+{%- block body %}
+<a id="hello" /></a>
+<div id="slide1" class="slide client" data-stellar-background-ratio="0.5">
+    <div class="container">
+        <div class="row ra-main-image">
+            <div class="col-md-3 hidden-sm visible-md visible-lg"></div>
+            <div class="col-xs-12 col-sm-9">
+                <h1>Peabody Sales</h1>
+                <p class="lead-copy">Branding and website for the new sales arm of Peabody property.</p>
+                <img src="{{ url_for('static', filename='img/folio/peabody-main-m.png') }}" class="hidden-sm hidden-md hidden-lg img-responsive" style="padding-top:50px;">
+                <img src="{{ url_for('static', filename='img/folio/peabody-main.png') }}" class="hidden-xs" style="position:absolute;left:-120px;width:1050px;padding-top:70px;">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="slide2" class="slide" data-stellar-background-ratio="0.5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 hidden-sm visible-md visible-lg"></div>
+            <div class="col-xs-12 col-sm-9">
+                <h2>Moving a charitable trust into luxury sales.</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 hidden-sm visible-md visible-lg"></div>
+            <div class="col-md-4 col-xs-6">
+                <p>The Peabody Trust is a remarkable organisation, having provided sustainable, affordable, lifetime homes in London for over 150 years. That’s why when we started working with the newly formed Peabody Sales group, we knew they would be equally remarkable - investing profits from their commercial sales back in to affordable housing and community support services. With such a unique positioning, passionate beliefs and individual approach we were focussed from the outset in ensuring this shone through brightly in the new brand &amp; in the way the website supports and engages customers.</p> 
+            </div>
+            <div class="col-md-4 col-xs-6">
+                <p>To deliver on this, it was essential to understand the tension between Peabody’s traditional role as a charitable trust and their new positioning as a credible - and above all, premium - luxury property sales business. Importantly, we needed to deliver not just a great research &amp; selection experience for customers, but to follow their journeys through to first contact, viewings and all throughout the sales process. We also worked alongside an established Peabody agency Moore-Wilson, who were engaged to build the site, assisting with creative direction and ongoing QA throughout the project.</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div id="slide4" class="slide projects" data-stellar-background-ratio="0.5">
+    <div class="container">
+        <div class="carousel slide" data-ride="carousel" id="folio">
+            <div class="carousel-inner">
+                <div class="folio-1 item active">
+                    <img src="{{ url_for('static', filename='img/folio/peabody1-m.png') }}" class="hidden-sm hidden-md hidden-lg">
+                    <img src="{{ url_for('static', filename='img/folio/peabody1.png') }}" class="hidden-xs">
+                    <div class="col-md-3 hidden-sm visible-md visible-lg"></div>
+                    <div class="col-md-9 col-xs-9 words">
+                        <h4>The customer is always right</h4>
+                        <p class="grey">From the outset we acknowledged the role of mobile &amp; tablet in the property search process. We created a fully responsive site design that adapts to any device the customer is likely to use, in any stage of their purchase journey.</p>
+                    </div>
+                </div>
+                <div class="folio-2 item">
+                    <img src="{{ url_for('static', filename='img/folio/peabody2-m.png') }}" class="hidden-sm hidden-md hidden-lg">
+                    <img src="{{ url_for('static', filename='img/folio/peabody2.png') }}" class="hidden-xs">
+                    <div class="col-md-3 hidden-sm visible-md visible-lg"></div>
+                    <div class="col-md-9 col-xs-9 words">
+                        <h4>The customer is always right</h4>
+                        <p class="grey">From the outset we acknowledged the role of mobile &amp; tablet in the property search process. We created a fully responsive site design that adapts to any device the customer is likely to use, in any stage of their purchase journey.</p>
+                    </div>
+                </div>
+                <div class="folio-3 item">
+                    <img src="{{ url_for('static', filename='img/folio/peabody3-m.png') }}" class="hidden-sm hidden-md hidden-lg">
+                    <img src="{{ url_for('static', filename='img/folio/peabody3.png') }}" class="hidden-xs">
+                    <div class="col-md-3 hidden-sm visible-md visible-lg"></div>
+                    <div class="col-md-9 col-xs-9 words">
+                        <h4>The customer is always right</h4>
+                        <p class="grey">From the outset we acknowledged the role of mobile &amp; tablet in the property search process. We created a fully responsive site design that adapts to any device the customer is likely to use, in any stage of their purchase journey.</p>
+                    </div>
+                </div>
+                <div class="folio-4 item">
+                    <img src="{{ url_for('static', filename='img/folio/peabody4-m.png') }}" class="hidden-sm hidden-md hidden-lg">
+                    <img src="{{ url_for('static', filename='img/folio/peabody4.png') }}" class="hidden-xs">
+                    <div class="col-md-3 hidden-sm visible-md visible-lg"></div>
+                    <div class="col-md-9 col-xs-9 words">
+                        <h4>The customer is always right</h4>
+                        <p class="grey">From the outset we acknowledged the role of mobile &amp; tablet in the property search process. We created a fully responsive site design that adapts to any device the customer is likely to use, in any stage of their purchase journey.</p>
+                    </div>
+                </div>
+                <div class="folio-5 item">
+                    <img src="{{ url_for('static', filename='img/folio/peabody5-m.png') }}" class="hidden-sm hidden-md hidden-lg">
+                    <img src="{{ url_for('static', filename='img/folio/peabody5.png') }}" class="hidden-xs">
+                    <div class="col-md-3 hidden-sm visible-md visible-lg"></div>
+                    <div class="col-md-9 col-xs-9 words">
+                        <h4>The customer is always right</h4>
+                        <p class="grey">From the outset we acknowledged the role of mobile &amp; tablet in the property search process. We created a fully responsive site design that adapts to any device the customer is likely to use, in any stage of their purchase journey.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="controls">
+                <a class="cycle" href="#folio" data-slide="prev"><span class="left"></span></a>
+                <a class="cycle" href="#folio" data-slide="next"><span class="right"></span></a>
+                <h3 class="counter hidden-sm visible-md visible-lg">1/5</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div style="background:#37424a url('{{ url_for('static', filename='img/folio/peabody6.png') }}') no-repeat center center;">
+    <div id="slide5-0" class="peabody-folio slide icons" data-stellar-background-ratio="0.5">
+        <div class="container" style="position:relative;">
+            <div class="row">
+                <img src="{{ url_for('static', filename='img/folio/peabody6-m.png') }}" class="hidden-sm hidden-md hidden-lg img-responsive">
+                <div class="words">
+                    <h4>Iconography</h4>
+                    <p class="intro">This was complimented by a new set of iconography that feels premium but approachable.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div style="background:#dbd4ca url('{{ url_for('static', filename='img/folio/peabody7.png') }}') no-repeat center center;">
+<div id="slide5-1" class="peabody-folio slide adaptive" data-stellar-background-ratio="0.5">
+    <div class="container" style="position:relative;">
+        <div class="row">
+            <img src="{{ url_for('static', filename='img/folio/peabody7-m.png') }}" class="hidden-sm hidden-md hidden-lg img-responsive">
+            <div class="words">
+                <h4>Consistent design, infinitely adaptable</h4>
+                <p class="intro">CMS driven templates allow the unique character of each development to shine through.</p>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<div style="background:#eee5d8 url('{{ url_for('static', filename='img/folio/peabody8.png') }}') no-repeat center center;">
+<div id="slide5-2" class="peabody-folio slide sales" data-stellar-background-ratio="0.5">
+    <div class="container" style="position:relative;">
+        <div class="row">
+            <img src="{{ url_for('static', filename='img/folio/peabody8-m.png') }}" class="hidden-sm hidden-md hidden-lg img-responsive">
+            <div class="words">
+                <h4>An online sales experience that just works</h4>
+                <p class="intro">The needs of customers change throughout the sales process and understanding their requirements, mindset and likely choice of device at each stage of the journey was essential to delivering a great end-to-end sales experience.</p>
+
+                <p>This meant an adaptable interface that can un-pack over time, allowing the customer dashboard to develop in complexity as prospects make initial contact with sales personnel, arrange viewings, make an offer and manage legal proceedings through to completion.</p>
+
+                <p>It also meant juggling some complex and detailed functional requirements with elegant, premium, friendly graphic design - so the website provides customers with what they need, when they need it, in the most convenient way possible.</p>
+            </div>   
+        </div>
+    </div>
+</div>
+</div>
+
+<div id="slide6" class="what-they-say slide" data-stellar-background-ratio="0.5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 hidden-sm visible-md visible-lg"></div>
+            <div class="col-md-9 col-xs-12">
+                <h2>“SOON_ came back with thoroughly researched ideas, brilliant concepts and innovative designs.”</h2>
+                <p class="by">Sigal Dwyer - Head of digital - Peabody</p>
+
+                <p class="result">Peabody Sales was launched mid-May 2014. Check back for an update on performance later in the year.</p>
+
+                <a href="http://peabodysales.co.uk">Visit peabodysales.co.uk</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="slide8" class="slide" data-stellar-background-ratio="0.5">
+    <div class="container contact">
+        <div class="row">
+            <div class="col-md-3 hidden-sm visible-md visible-lg">
+            </div>
+            <div class="col-md-9 col-xs-9">
+                <h1>Say hello</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 hidden-sm visible-md visible-lg"></div>
+            <div class="col-md-3 col-xs-6">
+                <h4 class="underline white">Visit us:</h4>
+                <p>The Third Floor<br>
+                Fergusson House<br>
+                124-128 City Road<br>
+                London<br>
+                EC1V 2NJ</p>
+            </div>
+            <div class="col-md-3 col-xs-6">
+                <h4 class="underline white">Get in touch:</h4>
+                <p>
+                    <a href="mailto:sophie@thisissoon.com">sophie@thisissoon.com</a><br />
+                    +44 (0) 208 1230 900<br />
+                    <a href="https://twitter.com/soonlondon" target="_blank">@thisissoon</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock -%}

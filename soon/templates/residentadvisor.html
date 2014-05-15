@@ -1,0 +1,234 @@
+{%- extends 'layout/base.html' -%}
+
+{%- block title -%}Resident Advisor{%- endblock -%}
+
+{%- block logo -%}<a class="navbar-brand" href="/"><img src="{{ url_for('static', filename='img/soon_white.png') }}" alt="SOON_" width="113px" height="44px" /></a>{%- endblock -%}
+
+{%- block javascript_tail %}
+<script src="{{ url_for('static', filename='js/soon.js') }}"></script>
+{% endblock -%}
+
+{%- block id -%}ra{%- endblock -%}
+
+{%- block nav -%}
+<div class="navbar-collapse collapse col-xs-12 col-sm-12">
+    <ul class="nav navbar-nav navbar-right">
+        <li><a href="/">Back</a></li>
+        <li><a href="/peabody">Peabody</a></li>
+    </ul>
+</div>
+{%- endblock -%}
+
+{%- block body %}
+<a id="hello" /></a>
+<div id="slide1" class="slide client" data-stellar-background-ratio="0.5">
+    <div class="container">
+        <div class="row ra-main-image">
+            <div class="col-md-3 hidden-sm visible-md visible-lg"></div>
+            <div class="col-xs-12 col-sm-9">
+                <h1>Resident Advisor</h1>
+                <p class="lead-copy">A new visual identity &amp; platform re-design for club culture’s favourite online magazine.</p>
+                <img src="{{ url_for('static', filename='img/folio/ra-main-m.png') }}" class="hidden-sm hidden-md hidden-lg img-responsive" style="padding-top:50px;">
+                <img src="{{ url_for('static', filename='img/folio/ra-main.png') }}" class="hidden-xs" style="position:absolute;left:-120px;width:1050px;padding-top:70px;">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="slide2" class="slide" data-stellar-background-ratio="0.5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 hidden-sm visible-md visible-lg"></div>
+            <div class="col-xs-12 col-sm-9">
+                <h2>Evolving a much loved brand.</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 hidden-sm visible-md visible-lg"></div>
+            <div class="col-md-4 col-xs-6">
+                <p>Resident Advisor (RA) is an online music magazine that's dedicated to showcasing electronic music, artists and events across the globe. It also has one of the most passionate and dedicated communities we’ve ever encountered - for whom RA is an hourly destination, with all the heated debates and digital culture that entails.</p>
+
+                <p>We weren’t just re-branding a company or re-designing a website. We were diving in to people’s lives, looking to re-invent something that was part of their daily routines and online identity.</p> 
+            </div>
+            <div class="col-md-4 col-xs-6">
+                <p>That meant approaching the project with an exceptional level of consideration and respect for the community - but still being unrepentant about what we believed needed to change.</p>
+
+                <p>This could only have been achieved by working hand-in-glove with the inspirational and talented management of RA, who develop the entire site in-house.</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div id="slide4" class="slide projects" data-stellar-background-ratio="0.5">
+    <div class="container">
+        <div class="carousel slide" data-ride="carousel" id="folio">
+            <div class="carousel-inner">
+                <div class="folio-1 item active">
+                    <img src="{{ url_for('static', filename='img/folio/ra1-m.png') }}" class="hidden-sm hidden-md hidden-lg">
+                    <img src="{{ url_for('static', filename='img/folio/ra1.png') }}" class="hidden-xs">
+                    <div class="col-md-3 hidden-sm visible-md visible-lg"></div>
+                    <div class="col-md-9 col-xs-9 words">
+                        <h4>The customer is always right</h4>
+                        <p class="grey">From the outset we acknowledged the role of mobile &amp; tablet in the property search process. We created a fully responsive site design that adapts to any device the customer is likely to use, in any stage of their purchase journey.</p>
+                    </div>
+                </div>
+                <div class="folio-2 item">
+                    <img src="{{ url_for('static', filename='img/folio/ra2-m.png') }}" class="hidden-sm hidden-md hidden-lg">
+                    <img src="{{ url_for('static', filename='img/folio/ra2.png') }}" class="hidden-xs">
+                    <div class="col-md-3 hidden-sm visible-md visible-lg"></div>
+                    <div class="col-md-9 col-xs-9 words">
+                        <h4>The customer is always right</h4>
+                        <p class="grey">From the outset we acknowledged the role of mobile &amp; tablet in the property search process. We created a fully responsive site design that adapts to any device the customer is likely to use, in any stage of their purchase journey.</p>
+                    </div>
+                </div>
+                <div class="folio-3 item">
+                    <img src="{{ url_for('static', filename='img/folio/ra3-m.png') }}" class="hidden-sm hidden-md hidden-lg">
+                    <img src="{{ url_for('static', filename='img/folio/ra3.png') }}" class="hidden-xs">
+                    <div class="col-md-3 hidden-sm visible-md visible-lg"></div>
+                    <div class="col-md-9 col-xs-9 words">
+                        <h4>The customer is always right</h4>
+                        <p class="grey">From the outset we acknowledged the role of mobile &amp; tablet in the property search process. We created a fully responsive site design that adapts to any device the customer is likely to use, in any stage of their purchase journey.</p>
+                    </div>
+                </div>
+                <div class="folio-4 item">
+                    <img src="{{ url_for('static', filename='img/folio/ra4-m.png') }}" class="hidden-sm hidden-md hidden-lg">
+                    <img src="{{ url_for('static', filename='img/folio/ra4.png') }}" class="hidden-xs">
+                    <div class="col-md-3 hidden-sm visible-md visible-lg"></div>
+                    <div class="col-md-9 col-xs-9 words">
+                        <h4>The customer is always right</h4>
+                        <p class="grey">From the outset we acknowledged the role of mobile &amp; tablet in the property search process. We created a fully responsive site design that adapts to any device the customer is likely to use, in any stage of their purchase journey.</p>
+                    </div>
+                </div>
+                <div class="folio-5 item">
+                    <img src="{{ url_for('static', filename='img/folio/ra5-m.png') }}" class="hidden-sm hidden-md hidden-lg">
+                    <img src="{{ url_for('static', filename='img/folio/ra5.png') }}" class="hidden-xs">
+                    <div class="col-md-3 hidden-sm visible-md visible-lg"></div>
+                    <div class="col-md-9 col-xs-9 words">
+                        <h4>The customer is always right</h4>
+                        <p class="grey">From the outset we acknowledged the role of mobile &amp; tablet in the property search process. We created a fully responsive site design that adapts to any device the customer is likely to use, in any stage of their purchase journey.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="controls">
+                <a class="cycle" href="#folio" data-slide="prev"><span class="left"></span></a>
+                <a class="cycle" href="#folio" data-slide="next"><span class="right"></span></a>
+                <h3 class="counter hidden-sm visible-md visible-lg">1/5</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div style="background:url('{{ url_for('static', filename='img/folio/ra6.png') }}') no-repeat center center fixed;-webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;">
+    <div id="slide5-0" class="ra-folio slide icons" data-stellar-background-ratio="0.5">
+        <div class="container" style="position:relative;">
+            <div class="row">
+                <img src="{{ url_for('static', filename='img/folio/ra6-m.png') }}" class="hidden-sm hidden-md hidden-lg img-responsive">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div style="background:#333 url('{{ url_for('static', filename='img/folio/ra7.png') }}') no-repeat center center fixed;-webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;">
+<div id="slide5-1" class="ra-folio slide adaptive" data-stellar-background-ratio="0.5">
+    <div class="container" style="position:relative;">
+        <div class="row">
+            <img src="{{ url_for('static', filename='img/folio/ra7-m.png') }}" class="hidden-sm hidden-md hidden-lg img-responsive">
+        </div>
+    </div>
+</div>
+</div>
+
+<div style="background:url('{{ url_for('static', filename='img/folio/ra8.png') }}') no-repeat center center fixed;-webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;">
+<div id="slide5-2" class="ra-folio slide sales" data-stellar-background-ratio="0.5">
+    <div class="container" style="position:relative;">
+        <div class="row">
+            <img src="{{ url_for('static', filename='img/folio/ra8-m.png') }}" class="hidden-sm hidden-md hidden-lg img-responsive">           
+        </div>
+    </div>
+</div>
+</div>
+
+<div style="background:url('{{ url_for('static', filename='img/folio/ra9.png') }}') no-repeat center center fixed;-webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;">
+<div id="slide5-3" class="ra-folio slide icons" data-stellar-background-ratio="0.5">
+    <div class="container" style="position:relative;">
+        <div class="row">
+            <img src="{{ url_for('static', filename='img/folio/ra9-m.png') }}" class="hidden-sm hidden-md hidden-lg img-responsive">
+        </div>
+    </div>
+</div>
+</div>
+
+<div style="background:#333 url('{{ url_for('static', filename='img/folio/ra10.png') }}') no-repeat center center fixed;-webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;">
+<div id="slide5-4" class="ra-folio slide icons" data-stellar-background-ratio="0.5">
+    <div class="container">
+        <div class="row">
+            <img src="{{ url_for('static', filename='img/folio/ra10-m.png') }}" class="hidden-sm hidden-md hidden-lg img-responsive">
+        </div>
+    </div>
+</div>
+</div>
+
+
+<div id="slide6" class="what-they-say slide" data-stellar-background-ratio="0.5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 hidden-sm visible-md visible-lg"></div>
+            <div class="col-md-9 col-xs-12">
+                <h2>“We thought the site is lovely and works really well for the sales team and hopefully will make us rich”</h2>
+                <p class="by">Paul Clement - Founder - Resident Advisor</p>
+
+                <p class="result">Resident Advisor was launched mid-Feb 2014.</p>
+
+                <a href="http://www.residentadvisor.net">Visit residentadvisor.net</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="slide8" class="slide" data-stellar-background-ratio="0.5">
+    <div class="container contact">
+        <div class="row">
+            <div class="col-md-3 hidden-sm visible-md visible-lg">
+            </div>
+            <div class="col-md-9 col-xs-9">
+                <h1>Say hello</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 hidden-sm visible-md visible-lg"></div>
+            <div class="col-md-3 col-xs-6">
+                <h4 class="underline white">Visit us:</h4>
+                <p>The Third Floor<br>
+                Fergusson House<br>
+                124-128 City Road<br>
+                London<br>
+                EC1V 2NJ</p>
+            </div>
+            <div class="col-md-3 col-xs-6">
+                <h4 class="underline white">Get in touch:</h4>
+                <p>
+                    <a href="mailto:sophie@thisissoon.com">sophie@thisissoon.com</a><br />
+                    +44 (0) 208 1230 900<br />
+                    <a href="https://twitter.com/soonlondon" target="_blank">@thisissoon</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock -%}

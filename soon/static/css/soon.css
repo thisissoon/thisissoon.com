@@ -2,6 +2,8 @@
 ----------------------------------------------------------------------------------------------------------------------------- */
 @import url(https://fonts.googleapis.com/css?family=Nixie+One);
 
+body {-webkit-font-smoothing: antialiased;}
+
 h1 {font-size:7em;padding-bottom:0.5em;}
 h2 {font-size:4em;padding-bottom:0.7em;}
 h3 {font-size:6em;}
@@ -18,6 +20,8 @@ a:hover {color:#fff;text-decoration: none;background: #000}
 em {font-style:normal;background:#ffff0b;padding:0px;margin:0px;}
 
 .navbar-brand {padding:13px 0 0 0;margin:0;}
+a.navbar-brand:hover {background: transparent;}
+.navbar-fixed-top {background:#ebf0f1;opacity:0.95;}
 
 .nav li { padding:0 0 0 130px;}
 .nav li a {color:#595b5b !important;padding-left:7px;margin:0;padding-right:30px;}
@@ -68,7 +72,6 @@ em {font-style:normal;background:#ffff0b;padding:0px;margin:0px;}
 #slide7 {
   padding-bottom:60px;
 }
-
 #slide1 {
   padding-top:120px !important;
   background-color: #ebf0f1;
@@ -77,36 +80,51 @@ em {font-style:normal;background:#ffff0b;padding:0px;margin:0px;}
   padding-top:80px !important;
   background-color: none;
 }
-
 #slide3 {
   padding-top:80px !important;
   background-color: #ffff0b;
 }
-
-/* case studies */
-#slide4 {background-color: #ebf0f1;}
-#slide4 .carousel-inner {top:-20px;}
-#slide4 a {font-size:1em;font-weight:normal;color:#000;text-decoration: none;background: #ffff0b;padding:3px;}
-#slide4 a:hover {color:#fff;text-decoration: none;background: #000}
-#slide4 span.left, span.right {position:absolute;width:48px;height:48px;display:block;}
-#slide4 span.left {right:50px;bottom:150px;background:url('../img/left.png') 0px 0px no-repeat !important;}
-#slide4 span.right {right:0px;bottom:150px;background:url('../img/right.png') 0px 0px no-repeat !important;}
-#slide4 h3.counter {position:absolute;font-size:3em;}
-#slide4 h2 {font-size:2.7em;padding-bottom:0;}
-
+#slide4 {
+  background-color: #ebf0f1;
+}
 #slide5 {
   padding-top:80px !important;
   background-color: #ffffff;
 }
-
 #slide6 {
   background-color: #3b3b3b;
 }
+#slide7 {
+  padding-top:80px !important;
+  padding-bottom:0px !important;
+}
+#slide8 {
+  padding-top:80px !important;
+  background-color: #000000;
+}
 
-/* slide7 about */
+/* case studies */
+.projects {background-color: #ebf0f1 !important;}
+.projects .carousel-inner {top:-20px;}
+.projects a {font-size:1em;font-weight:normal;color:#000;text-decoration: none;background: #ffff0b;padding:3px;}
+.projects a:hover {color:#fff;text-decoration: none;background: #000}
+.projects span.left, span.right {position:absolute;width:48px;height:48px;display:block;}
+.projects span.left {right:50px;bottom:50px;background:url('../img/left.png') 0px 0px no-repeat !important;}
+.projects span.right {right:0px;bottom:50px;background:url('../img/right.png') 0px 0px no-repeat !important;}
+.projects h3.counter {position:absolute;font-size:3em;}
+.projects h2 {font-size:2.7em;padding-bottom:0;}
+
+/* about us */
 .about {
   background:url('../img/wall.png') 0 -163px repeat-x;
 }
+.about h2 {width:300px !important;}
+.about h4.underline {width:125px;}
+.about a:hover {color:#000;text-decoration: none;background: #fff}
+.about span.left, span.right {position:absolute;width:48px;height:48px;display:block;}
+.about span.left {left:10px;bottom:70px;background:url('../img/left.png') 0px 0px no-repeat !important;}
+.about span.right {left:60px;bottom:70px;background:url('../img/right.png') 0px 0px no-repeat !important;}
+.about h3.counter {position:absolute;font-size:3em;}
 .fred, .alex, .greg, .chris {
   display:block;
   height:240px;
@@ -123,26 +141,70 @@ em {font-style:normal;background:#ffff0b;padding:0px;margin:0px;}
 .chris {
   background:url('../img/chris.png') 140px -20px no-repeat;
 }
-#slide7 {
-  padding-top:80px !important;
-  padding-bottom:0px !important;
-}
-#slide7 h2 {width:300px !important;}
-#slide7 h4.underline {width:125px;}
-#slide7 a:hover {color:#000;text-decoration: none;background: #fff}
-#slide7 span.left, span.right {position:absolute;width:48px;height:48px;display:block;}
-#slide7 span.left {left:10px;bottom:70px;background:url('../img/left.png') 0px 0px no-repeat !important;}
-#slide7 span.right {left:60px;bottom:70px;background:url('../img/right.png') 0px 0px no-repeat !important;}
-#slide7 h3.counter {position:absolute;font-size:3em;}
 
-#slide8 {
-  padding-top:80px !important;
-  background-color: #000000;
-}
-#slide8 a:hover {color:#000;text-decoration: none;background: #fff}
-
+/* contact us */
+.contact a:hover {color:#000;text-decoration: none;background: #fff}
 a.cycle {background:transparent !important}
 
+/* PEABODY */
+
+#peabody {-webkit-font-smoothing: antialiased;}
+
+#peabody .navbar-fixed-top {background-color:#eee5d8;opacity:0.95;}
+#peabody .nav li a:hover {background-color:#eee5d8;}
+
+#peabody .client {background-color:#eee5d8;padding-bottom:0px;}
+#peabody .client {font-size:0.7em !important;}
+
+#peabody #slide2 {background-color:#eee5d8;padding-top:60px !important;padding-bottom:70px !important;}
+#peabody #slide2 h2 {font-size:2.7em !important;}
+#peabody #slide2 p {width:98% !important;line-height:1.8em;}
+
+#peabody #slide4 {padding-bottom: 0px;}
+#peabody .projects {background-color:#dbd4ca !important}
+#peabody .projects .carousel-inner .words {padding:0;}
+
+#peabody .icons{color:#cccccc !important;}
+#peabody .adaptive {color:#333 !important;}
+#peabody .sales{color:#333 !important;}
+
+#peabody #slide5-0 .words {position:absolute;top:20px;left:15px;width:400px;}
+#peabody #slide5-1 .words {position:absolute;top:20px;left:15px;width:400px;}
+#peabody #slide5-2 .words {position:absolute;top:20px;left:175px;width:350px;}
+
+#peabody .what-they-say {background-color:#eee5d8 !important;padding-top:40px;}
+#peabody .what-they-say h2 {font-size:2.7em;padding-bottom:0 !important;}
+#peabody .what-they-say .result {padding-top:60px;padding-bottom:20px;width:100%;}
+#peabody .what-they-say a {background:#ffff0b;padding:3px;font-size:2em;font-family: 'Nixie One', sans-serif; font-weight:normal;}
+#peabody .what-they-say a:hover {background:#000;}
+
+
+/* RESIDENT ADVISOR */
+
+#ra {-webkit-font-smoothing: antialiased;}
+
+#ra .navbar-fixed-top {background-color:#393a3a;opacity:0.95;}
+#ra .nav li a:hover {background-color:#393a3a;}
+#ra .nav li a {color:#eff3f4 !important;}
+
+#ra .client {background-color:#393a3a;color:#eff3f4;padding-bottom:70px;}
+#ra .client {font-size:0.7em !important;}
+
+#ra #slide2 {background-color:#676767;padding-top:60px !important;padding-bottom:70px !important;}
+#ra #slide2 h2 {font-size:2.7em !important;color:#eff3f4;}
+#ra #slide2 p {width:98% !important;line-height:1.8em;color:#eff3f4;}
+
+#ra #slide4 {padding-bottom: 0px;}
+#ra .projects .carousel-inner .words {padding:0;}
+
+#ra .what-they-say {background-color:#393a3a !important;padding-top:40px;}
+#ra .what-they-say h2 {font-size:2.7em;padding-bottom:0 !important;color:#eff3f4;}
+#ra .what-they-say .by {color:#eff3f4;}
+#ra .what-they-say .result {padding-top:60px;padding-bottom:20px;color:#eff3f4;width:100%;}
+#ra .what-they-say a {background:#ffff0b;padding:3px;font-size:2em;font-family: 'Nixie One', sans-serif; font-weight:normal;}
+#ra .what-they-say a:hover {background:#000;}
+
+/* DESKTOP */
 @media (min-width: 992px)
 {
   .navbar-brand {display:none;}
@@ -155,7 +217,9 @@ a.cycle {background:transparent !important}
   #slide5,
   #slide6,
   #slide7,
-  #slide8 {
+  #slide8,
+  .peabody-folio,
+  .ra-folio {
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-position: 40px 220px !important;
@@ -177,6 +241,7 @@ a.cycle {background:transparent !important}
   }
   #slide2 h2 {font-size:6em !important;width:70% !important;}
   #slide2 p {width:50% !important;line-height:1.8em;}
+
   /*what we do*/
   #slide3 {
     padding-top:100px !important;
@@ -184,38 +249,37 @@ a.cycle {background:transparent !important}
   }
   #slide3 h2 {padding-bottom:0;width:70%;}
   #slide3 li {font-size:0.9em;}
-  /*RA*/
-  #slide4 {
+  
+  #slide3 {
+    padding-top:100px !important;
     background-image: url(../img/soon_black.png);
-  }
-  #slide4 .carousel-inner {top:-40px;}
-  #slide4 p {width:60% !important;padding-top: 10px;}
-
-  #slide4 span.left {
-    right:130px;
-    bottom:120px;
-  }
-  #slide4 span.right {
-    right:78px;
-    bottom:120px;
-  }
-
-  #slide4 h3.counter {
-    right:0px;
-    bottom:115px;
   }
 
   #slide5 {
     padding-top:100px !important;
     background-image: url(../img/soon_black.png);
   }
-  #slide5 .intro {width:55% !important;padding-bottom:30px;}
-  /*#slide5 h4 {font-size:1em !important;}*/
 
-  #slide6 {
-    padding-top:100px !important;
-    background-image: url(../img/soon_white.png);
+  .projects {
+    background-image: url(../img/soon_black.png);
+    height:680px;
   }
+  .projects .carousel-inner {top:-40px;}
+  .projects p {width:60% !important;padding-top:10px;}
+  .projects span.left {
+    right:130px;
+    bottom:120px;
+  }
+  .projects span.right {
+    right:78px;
+    bottom:120px;
+  }
+  .projects h3.counter {
+    right:0px;
+    bottom:115px;
+  }
+  .projects .carousel-inner .words {padding:0px;}
+  .projects .controls {position:absolute;right:70px;top:705px;}
 
   /* slide7 about */
   .about {
@@ -250,7 +314,90 @@ a.cycle {background:transparent !important}
   }
   #slide8 p, #slide8 h4 {font-size: 0.9em; line-height: 1.8em; font-weight: normal}
 
-  .carousel {}
-  .carousel-inner img {padding-left:280px;}
+  #home .carousel {height:480px !important;}
+  #home .carousel-inner img {padding-left:280px;}
+
+  /* PEABODY */
+
+  #peabody #slide1 {
+    background-image: url(../img/soon_black.png);
+  }
+  #peabody #slide2 {
+    padding-top:100px !important;
+    background-image: url(../img/soon_black.png);
+  }
+
+  #peabody .client {height:1310px !important;}
+  #peabody .client {font-size:1em !important;}
+  #peabody .client h1 {width:200px;position:relative;top:-106px;margin-bottom:-30px;padding-bottom:0px;}
+
+  #peabody #slide2 {padding-top:0px !important;padding-bottom:120px !important;}
+
+  #peabody .projects {height:780px !important;}
+  #peabody .projects .carousel-inner {position:absolute;right:-180px;top:-40px;width:1200px;height:800px;}
+  #peabody .projects .carousel-inner img {position:absolute;left:-30px;}
+  #peabody .projects .carousel-inner .words {position:absolute;top:600px;left:170px;}
+  #peabody .projects .controls {position:absolute;right:80px;top:773px;}
+
+  #peabody .peabody-folio {
+    background-image: url(../img/soon_black.png);
+    height:800px;
+  }
+  #peabody .icons {
+    background-image: url(../img/soon_white.png);
+  }
+
+  #peabody #slide5-0 .words {position:absolute;top:120px;left:305px;width:400px;}
+  #peabody #slide5-1 .words {position:absolute;top:680px;left:305px;width:400px;}
+  #peabody #slide5-2 .words {position:absolute;top:110px;left:700px;width:350px;}
+
+  #peabody .what-they-say {
+    background-image: url(../img/soon_black.png);
+    padding-top:80px;
+  }
+  #peabody .what-they-say h2 {font-size:3.5em;padding-bottom:0 !important;width:85%;}
+  #peabody .what-they-say .result {width:50%;}
+  #peabody .what-they-say a {font-size:3em;}
+
+  /* RESIDENT ADVISOR */
+
+  #ra .client {background-color:#393a3a;}
+  
+  #ra #slide1 {
+    background-image: url(../img/soon_white.png);
+  }
+  #ra #slide2 {
+    padding-top:100px !important;
+    background-image: url(../img/soon_white.png);
+  }
+
+  #ra .client {height:1310px !important;}
+  #ra .client {font-size:1em !important;}
+  #ra .client h1 {width:200px;position:relative;top:-106px;margin-bottom:-30px;padding-bottom:0px;}
+
+  #ra #slide2 {padding-top:100px !important;padding-bottom:120px !important;}
+
+  #ra .projects {height:780px !important;}
+  #ra .projects .carousel-inner {position:absolute;right:-180px;top:-155px;width:1200px;height:880px;}
+  #ra .projects .carousel-inner img {position:absolute;left:-30px;}
+  #ra .projects .carousel-inner .words {position:absolute;top:750px;left:157px;}
+  #ra .projects .controls {position:absolute;right:80px;top:803px;}
+
+  #ra .ra-folio {
+    padding-top:100px !important;
+    background-image: url(../img/soon_white.png);
+    height:800px;
+  }
+  #ra #slide5-2 {
+    background-image: url(../img/soon_black.png);
+  }
+
+  #ra .what-they-say {
+    background-image: url(../img/soon_white.png);
+    padding-top:80px;
+  }
+  #ra .what-they-say h2 {font-size:3.5em;padding-bottom:0 !important;color:#eff3f4;width:85%;}
+  #ra .what-they-say .result {width:50%;}
+  #ra .what-they-say a {font-size:3em;}
 
 }

@@ -1,8 +1,24 @@
 {%- extends 'layout/base.html' -%}
 
+{%- block logo -%}<a class="navbar-brand" href="/"><img src="{{ url_for('static', filename='img/soon_black.png') }}" alt="SOON_" width="113px" height="44px" /></a>{%- endblock -%}
+
 {%- block javascript_tail %}
 <script src="{{ url_for('static', filename='js/soon.js') }}"></script>
 {% endblock -%}
+
+{%- block id -%}home{%- endblock -%}
+
+{%- block nav -%}
+<div class="navbar-collapse collapse col-xs-12 col-sm-12">
+    <ul class="nav navbar-nav navbar-right">
+        <li data-slide="1"><a href="#home">Hello</a></li>
+        <li data-slide="2"><a href="#what">What we do</a></li>
+        <li data-slide="4"><a href="#projects">Recent projects</a></li>
+        <li data-slide="5"><a href="#jobs">Work with us</a></li>
+        <li data-slide="7"><a href="#contact">Get in touch</a></li>
+    </ul>
+</div>
+{%- endblock -%}
 
 {%- block body %}
 <a id="hello" /></a>
@@ -41,7 +57,7 @@
     <div class="container panel-3">
         <div class="row">
             <div class="col-md-3 hidden-sm visible-md visible-lg"></div>
-            <div class="col-md-9 col-xs-9">
+            <div class="col-md-9 col-xs-12">
                 <h2>We make brilliant digital things...</h2>
                 <p>In more detail, we provide:</p>
             </div>
@@ -93,32 +109,34 @@
 </div>
 
 <a id="projects" /></a>
-<div id="slide4" class="slide" data-stellar-background-ratio="0.5">
+<div id="slide4" class="projects slide" data-stellar-background-ratio="0.5">
     <div class="container">
         <div class="carousel slide" data-ride="carousel" id="folio">
             <div class="carousel-inner">
                 <div class="folio-1 item active">
                     <img src="{{ url_for('static', filename='img/1_RA.png') }}">
                     <div class="col-md-3 hidden-sm visible-md visible-lg"></div>
-                    <div class="col-md-9 col-xs-9">
-                        <h2>Resident Advisor</h2>
-                        <p class="grey">We have just launched a new identity and web-platform for online electronic music magazine Resident Advisor</p>
-                        <a href="#">Read the full case study</a>
+                    <div class="col-md-9 col-xs-9 words">
+                        <h2>Peabody</h2>
+                        <p class="grey">...</p>
+                        <a href="/peabody/">Read the full case study</a>
                     </div>
                 </div>
                 <div class="folio-2 item">
                     <img src="{{ url_for('static', filename='img/2_RA.png') }}">
                     <div class="col-md-3 hidden-sm visible-md visible-lg"></div>
-                    <div class="col-md-9 col-xs-9">
+                    <div class="col-md-9 col-xs-9 words">
                         <h2>Resident Advisor</h2>
                         <p class="grey">We have just launched a new identity and web-platform for online electronic music magazine Resident Advisor</p>
-                        <a href="#">Read the full case study</a>
+                        <a href="/residentadvisor/">Read the full case study</a>
                     </div>
                 </div>
             </div>
-            <h3 class="counter hidden-sm visible-md visible-lg">1/2</h3>
-            <a class="cycle" href="#folio" data-slide="prev"><span class="left"></span></a>
-            <a class="cycle" href="#folio" data-slide="next"><span class="right"></span></a>
+            <div class="controls">
+                <a class="cycle" href="#folio" data-slide="prev"><span class="left"></span></a>
+                <a class="cycle" href="#folio" data-slide="next"><span class="right"></span></a>
+                <h3 class="counter hidden-sm visible-md visible-lg">1/2</h3>
+            </div>
         </div>
     </div>
 </div>
