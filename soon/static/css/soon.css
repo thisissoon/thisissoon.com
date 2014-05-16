@@ -9,7 +9,7 @@ h2 {font-size:4em;padding-bottom:0.7em;}
 h3 {font-size:6em;}
 h4 {font-size:1.2em;}
 h5 {font-size:1.7em;}
-.lead-copy {font-size:2em;line-height:1.4em;padding-bottom:10px;}
+.lead-copy {font-size:2em;line-height:1.2em;padding-bottom:10px;}
 
 h1, h2, h3, h5, .lead-copy  {font-family: 'Nixie One', sans-serif; font-weight:normal;}
 
@@ -120,6 +120,7 @@ a.navbar-brand:hover {background: transparent;}
 }
 .about h2 {width:300px !important;}
 .about h4.underline {width:125px;}
+.about a.linkedin {background:#ffff0b;padding:5px 3px 3px 3px;margin:0;}
 .about a:hover {color:#000;text-decoration: none;background: #fff}
 .about span.left, span.right {position:absolute;width:48px;height:48px;display:block;}
 .about span.left {left:10px;bottom:70px;background:url('../img/left.png') 0px 0px no-repeat !important;}
@@ -148,8 +149,6 @@ a.cycle {background:transparent !important}
 
 /* PEABODY */
 
-#peabody {-webkit-font-smoothing: antialiased;}
-
 #peabody .navbar-fixed-top {background-color:#eee5d8;opacity:0.95;}
 #peabody .nav li a:hover {background-color:#eee5d8;}
 
@@ -162,17 +161,18 @@ a.cycle {background:transparent !important}
 
 #peabody #slide4 {padding-bottom: 0px;}
 #peabody .projects {background-color:#dbd4ca !important}
-#peabody .projects .carousel-inner .words {padding:0;}
+#peabody .projects .carousel-inner .words {padding:0 10px 0 0;height:180px;}
+#peabody .projects .controls {position:absolute;right:0;top:88%;}
 
-#peabody .icons{color:#cccccc !important;}
-#peabody .adaptive {color:#333 !important;}
-#peabody .sales{color:#333 !important;}
+#peabody .icons{color:#cccccc !important;height:340px;}
+#peabody .adaptive {color:#333 !important;height:380px;}
+#peabody .sales{color:#333 !important;height:360px;}
 
-#peabody #slide5-0 .words {position:absolute;top:20px;left:15px;width:400px;}
-#peabody #slide5-1 .words {position:absolute;top:20px;left:15px;width:400px;}
-#peabody #slide5-2 .words {position:absolute;top:20px;left:175px;width:350px;}
+#peabody #slide5-0 .words {position:absolute;top:280px;left:15px;}
+#peabody #slide5-1 .words {position:absolute;top:320px;left:15px;}
+#peabody #slide5-2 .words {position:absolute;top:300px;left:15px;}
 
-#peabody .what-they-say {background-color:#eee5d8 !important;padding-top:40px;}
+#peabody .what-they-say {background-color:#eee5d8 !important;padding-top:60px;padding-bottom:80px}
 #peabody .what-they-say h2 {font-size:2.7em;padding-bottom:0 !important;}
 #peabody .what-they-say .result {padding-top:60px;padding-bottom:20px;width:100%;}
 #peabody .what-they-say a {background:#ffff0b;padding:3px;font-size:2em;font-family: 'Nixie One', sans-serif; font-weight:normal;}
@@ -181,7 +181,6 @@ a.cycle {background:transparent !important}
 
 /* RESIDENT ADVISOR */
 
-#ra {-webkit-font-smoothing: antialiased;}
 
 #ra .navbar-fixed-top {background-color:#393a3a;opacity:0.95;}
 #ra .nav li a:hover {background-color:#393a3a;}
@@ -203,6 +202,11 @@ a.cycle {background:transparent !important}
 #ra .what-they-say .result {padding-top:60px;padding-bottom:20px;color:#eff3f4;width:100%;}
 #ra .what-they-say a {background:#ffff0b;padding:3px;font-size:2em;font-family: 'Nixie One', sans-serif; font-weight:normal;}
 #ra .what-they-say a:hover {background:#000;}
+
+
+@media (max-width:992px) and (min-width:420px) {
+  #slide5-0,#slide5-1,#slide5-2,#slide5-3,#slide5-4 {display:none !important;}
+}
 
 /* DESKTOP */
 @media (min-width: 992px)
@@ -233,7 +237,7 @@ a.cycle {background:transparent !important}
     padding-top:182px !important;
     background-image: url(../img/soon_black.png);
   }
-  #slide1 .lead-copy {font-size:3em !important;line-height:1.4em;width:85% !important;}
+  #slide1 .lead-copy {font-size:3em !important;line-height:1.2em;width:85% !important;}
   /* be more digital */
   #slide2 {
     padding-top:100px !important;
@@ -336,8 +340,9 @@ a.cycle {background:transparent !important}
   #peabody .projects {height:780px !important;}
   #peabody .projects .carousel-inner {position:absolute;right:-180px;top:-40px;width:1200px;height:800px;}
   #peabody .projects .carousel-inner img {position:absolute;left:-30px;}
-  #peabody .projects .carousel-inner .words {position:absolute;top:600px;left:170px;}
-  #peabody .projects .controls {position:absolute;right:80px;top:773px;}
+  #peabody .projects .carousel-inner .words {position:absolute;top:600px;left:170px;height:180px;width:70%;}
+  #peabody .projects .controls {position:absolute;right:80px;top:760px;}
+
 
   #peabody .peabody-folio {
     background-image: url(../img/soon_black.png);
@@ -347,7 +352,7 @@ a.cycle {background:transparent !important}
     background-image: url(../img/soon_white.png);
   }
 
-  #peabody #slide5-0 .words {position:absolute;top:120px;left:305px;width:400px;}
+  #peabody #slide5-0 .words {position:absolute;top:100px;left:305px;width:600px;}
   #peabody #slide5-1 .words {position:absolute;top:680px;left:305px;width:400px;}
   #peabody #slide5-2 .words {position:absolute;top:110px;left:700px;width:350px;}
 
@@ -373,7 +378,7 @@ a.cycle {background:transparent !important}
 
   #ra .client {height:1310px !important;}
   #ra .client {font-size:1em !important;}
-  #ra .client h1 {width:200px;position:relative;top:-106px;margin-bottom:-30px;padding-bottom:0px;}
+  #ra .client h1 {width:200px;position:relative;top:-106px;margin-bottom:-30px;padding-bottom:0px;line-height:1em;}
 
   #ra #slide2 {padding-top:100px !important;padding-bottom:120px !important;}
 
