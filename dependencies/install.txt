@@ -4,14 +4,14 @@
 #
 
 # Application
+WTForms>=1.0.5,<2.0
 Flask==0.10.1
 Flask-Migrate==1.2.0
-Flask-Login==0.2.10
-Flask-Security==1.7.1
-Flask-Velox==2014.04.24.2
+Flask-Security
+Flask-Velox
 
 # Forms
-WTForms-Alchemy==0.12.2
+WTForms-Alchemy
 
 # Databse
 SQLAlchemy==0.9.3
