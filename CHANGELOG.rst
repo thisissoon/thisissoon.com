@@ -1,6 +1,12 @@
 Change Log
 ==========
 
+2014.06.05
+----------
+- Feature: HTML Case Studies
+- Feature: Staff portraits on home page
+- Improved: Updated contact information
+
 2014.04.25
 ----------
 - Feature: Integrated Flask-Velox

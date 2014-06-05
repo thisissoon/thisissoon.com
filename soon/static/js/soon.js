@@ -4,7 +4,7 @@ jQuery(document).ready(function ($) {
     $(window).stellar();
 
     //Cache variables for Stellar.js in the document
-    var links = $('.nav').find('li');
+    var links = $('#home .nav').find('li');
     slide = $('.slide');
     button = $('.button');
     mywindow = $(window);

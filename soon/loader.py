@@ -11,7 +11,7 @@ import os
 from flask import Flask
 from flask.ext.security import SQLAlchemyUserDatastore
 from soon.exceptions import ImproperlyConfigured
-from soon.views.home import HomeView
+from soon.views.home import HomeView, peabody, residentadvisor
 from soon.ext import collect, db, gravatar, migrate, security, velox
 from werkzeug import SharedDataMiddleware
 
@@ -213,5 +213,9 @@ def create_app(config=None):
 
     # Register homepage
     app.add_url_rule('/', view_func=HomeView.as_view('home'))
+    # Register Peabody (Portfolio)
+    app.add_url_rule('/peabody/', view_func=peabody.as_view('peabody'))
+    # Register Resident Advisor (Portfolio)
+    app.add_url_rule('/residentadvisor/', view_func=residentadvisor.as_view('residentadvisor'))
 
     return app
