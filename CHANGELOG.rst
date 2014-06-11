@@ -1,6 +1,10 @@
 Change Log
 ==========
 
+2014.06.11.1
+------------
+- Hotfix: Removing forms / admin
+
 2014.06.11
 ----------
 - Feature: Added Ryan and Ed to People
