@@ -14,7 +14,7 @@ h5 {font-size:1.7em;}
 h1, h2, h3, h5, .lead-copy  {font-family: 'Nixie One', sans-serif; font-weight:normal;}
 
 p a {background:#ffff0b;padding:3px;}
-a {color:#000;}
+a {color:#000;outline:0;}
 a:hover {color:#fff;text-decoration: none;background: #000}
 
 em {font-style:normal;background:#ffff0b;padding:0px;margin:0px;}
@@ -152,7 +152,7 @@ a.navbar-brand:hover {background: transparent;}
 
 /* contact us */
 .contact a:hover {color:#000;text-decoration: none;background: #fff}
-a.cycle {background:transparent !important}
+a.cycle {background:transparent !important;outline:0;}
 
 /* PEABODY */
 
@@ -325,6 +325,9 @@ a.cycle {background:transparent !important}
     width:210px;
   }
   .about .cycle {position:absolute;top:15px;left:900px;}
+  .about h3.counter {
+    top:-125px;left:1030px;
+  }
   .about h4.underline {width:175px;}
 
   #slide7 {
