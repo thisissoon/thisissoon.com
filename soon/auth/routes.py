@@ -6,7 +6,7 @@
 """
 
 from flask.blueprints import Blueprint
-from soon.auth.admin import UserAdminView
+#from soon.auth.admin import UserAdminView
 
 
 blueprint = Blueprint(
@@ -17,9 +17,9 @@ blueprint = Blueprint(
 
 routes = []
 
-admin = [
-    UserAdminView(
-        name='Users',
-        url='users',
-        endpoint='admin.users')
-]
+#admin = [
+#    UserAdminView(
+#        name='Users',
+#        url='users',
+#        endpoint='admin.users')
+#]
