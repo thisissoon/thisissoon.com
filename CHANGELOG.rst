@@ -1,6 +1,11 @@
 Change Log
 ==========
 
+2014.06.11
+----------
+- Feature: Added Ryan and Ed to People
+- Bugfix Pinning WTForms-Alchemy Version
+
 2014.06.05
 ----------
 - Feature: HTML Case Studies

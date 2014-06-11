@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <meta content="IE=edge" http-equiv="X-UA-Compatible">
         <meta name="viewport" content="width=device-width, initial-scale=0.8, user-scalable=no">
+        <meta name="description" content="We make brands successful by combining insightful strategy, seamless technology, persuasive design and relevant content.">
         <meta content="We make brands successful by combining insightful strategy, seamless technology, persuasive design and relevant content." name="description">
         <meta content="dorks@thisissoon.com" name="author">
         <link href="{{ url_for('static', filename='img/favicon.ico') }}" rel="shortcut icon">
@@ -53,7 +54,8 @@
             ga('send', 'pageview');
         </script>
         <script type="text/javascript" charset="utf-8">
-            $('#folio').bind('slid.bs.carousel', function () {
+            $('#folio').bind('slid.bs.carousel', function (e) {
+                console.log(e.target.id);
                 // This variable contains all kinds of data and methods related to the carousel
                 var carouselData = $(this).data('bs.carousel');
                 var currentIndex = carouselData.getActiveIndex();
@@ -65,8 +67,25 @@
 
                 // You have to create a HTML element <div id="carousel-index"></div>
                 // under your carousel to make this work
-                $('.counter').html(text);
+                $('#folio .counter').html(text);
             })
+
+            $('#group').bind('slid.bs.carousel', function (e) {
+                console.log(e.target.id);
+                // This variable contains all kinds of data and methods related to the carousel
+                var carouselData = $(this).data('bs.carousel');
+                var currentIndex = carouselData.getActiveIndex();
+                var total = carouselData.$items.length;
+
+                // Create the text we want to display.
+                // We increment the index because humans don't count like machines
+                var text = (currentIndex + 1) + "/" + total;
+
+                // You have to create a HTML element <div id="carousel-index"></div>
+                // under your carousel to make this work
+                $('#group .counter').html(text);
+            })
+
         </script>
     </body>
 </html>
