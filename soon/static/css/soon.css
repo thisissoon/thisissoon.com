@@ -112,21 +112,22 @@ a.navbar-brand:hover {background: transparent;}
 .projects span.left {right:50px;bottom:50px;background:url('../img/left.png') 0px 0px no-repeat !important;}
 .projects span.right {right:0px;bottom:50px;background:url('../img/right.png') 0px 0px no-repeat !important;}
 .projects h3.counter {position:absolute;font-size:3em;}
-.projects h2 {font-size:2.7em;padding-bottom:0;}
+.projects h2 {font-size:2.7em;padding-bottom:0;width:340px;margin-right:0;}
+.projects .grey {height:65px;}
 
 /* about us */
 .about {
   background:url('../img/wall.png') 0 -163px repeat-x;
 }
 .about h2 {width:300px !important;}
-.about h4.underline {width:125px;}
+.about h4.underline {width:135px;}
 .about a.linkedin {background:#ffff0b;padding:5px 3px 3px 3px;margin:0;}
 .about a:hover {color:#000;text-decoration: none;background: #fff}
 .about span.left, span.right {position:absolute;width:48px;height:48px;display:block;}
 .about span.left {left:10px;bottom:70px;background:url('../img/left.png') 0px 0px no-repeat !important;}
 .about span.right {left:60px;bottom:70px;background:url('../img/right.png') 0px 0px no-repeat !important;}
 .about h3.counter {position:absolute;font-size:3em;}
-.fred, .alex, .greg, .chris {
+.fred, .alex, .greg, .chris, .ryan, .ed {
   display:block;
   height:240px;
 }
@@ -141,6 +142,12 @@ a.navbar-brand:hover {background: transparent;}
 }
 .chris {
   background:url('../img/chris.png') 140px -20px no-repeat;
+}
+.ryan {
+  background:url('../img/ryan.png') 140px -20px no-repeat;
+}
+.ed {
+  background:url('../img/ed.png') 140px -20px no-repeat;
 }
 
 /* contact us */
@@ -264,6 +271,10 @@ a.cycle {background:transparent !important}
     background-image: url(../img/soon_black.png);
   }
 
+  #slide7 {
+    height:870px;
+  }
+
   .projects {
     background-image: url(../img/soon_black.png);
     height:680px;
@@ -289,7 +300,7 @@ a.cycle {background:transparent !important}
   .about {
     background:url('../img/wall.png') 0 -163px repeat-x;
   }
-  .fred, .alex, .greg, .chris {
+  .fred, .alex, .greg, .chris, .ryan, .ed {
     display:block;
     height:640px;
   }
@@ -305,6 +316,17 @@ a.cycle {background:transparent !important}
   .chris {
     background:url('../img/chris.png') -20px 113px no-repeat;
   }
+  .ryan {
+    background:url('../img/ryan.png') -18px 113px no-repeat;
+    width:205px;
+  }
+  .ed {
+    background:url('../img/ed.png') -10px 113px no-repeat;
+    width:210px;
+  }
+  .about .cycle {position:absolute;top:15px;left:900px;}
+  .about h4.underline {width:175px;}
+
   #slide7 {
     padding-top:100px !important;
     padding-bottom:0px !important;
