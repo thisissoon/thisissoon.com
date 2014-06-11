@@ -11,7 +11,7 @@ Flask-Security
 Flask-Velox
 
 # Forms
-WTForms-Alchemy
+WTForms-Alchemy==0.12.2
 
 # Databse
 SQLAlchemy==0.9.3
