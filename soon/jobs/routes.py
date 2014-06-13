@@ -6,7 +6,7 @@
 """
 
 from flask.blueprints import Blueprint
-#from soon.jobs.admin import JobAdminView
+from soon.jobs.admin import JobAdminView
 
 
 blueprint = Blueprint(
@@ -17,9 +17,9 @@ blueprint = Blueprint(
 
 routes = []
 
-#admin = [
-#    JobAdminView(
-#        name='Jobs',
-#        url='jobs',
-#        endpoint='admin.jobs')
-#]
+admin = [
+    JobAdminView(
+        name='Jobs',
+        url='jobs',
+        endpoint='admin.jobs')
+]
