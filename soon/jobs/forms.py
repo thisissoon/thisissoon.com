@@ -19,7 +19,7 @@ class JobForm(ModelForm):
     file_required = FileRequired('Job Spec PDF required.')
     file_allowed = FileAllowed(['pdf', ], 'PDF Only')
 
-    class Meta:
+    class Meta(object):
         model = Job
         only = ['title', 'blurb', 'spec']
 

@@ -123,16 +123,16 @@ def register_extenstions(app):
     gravatar.init_app(app)
 
     # Admin
-#    from flask.ext.admin import Admin
-#    from soon.views.admin.home import AdminHomeView
-#
-#    global admin
-#
-#    admin = Admin(
-#        name='soon',
-#        index_view=AdminHomeView(name='Dashboard'),
-#        base_template='layout/admin.html')
-#    admin.init_app(app)
+    from flask.ext.admin import Admin
+    from soon.views.admin.home import AdminHomeView
+
+    global admin
+
+    admin = Admin(
+        name='soon',
+        index_view=AdminHomeView(name='Dashboard'),
+        base_template='layout/admin.html')
+    admin.init_app(app)
 
     # Static Collect
     collect.init_app(app)

@@ -26,7 +26,7 @@ class UserPasswordForm(ModelForm):
         EqualTo('confirm', message='Passwords must match')])
     confirm = PasswordField('Confirm')
 
-    class Meta:
+    class Meta(object):
         model = User
         only = ['password', ]
 
@@ -43,7 +43,7 @@ class UserPasswordForm(ModelForm):
 
 class NewUserAdminForm(ModelForm):
 
-    class Meta:
+    class Meta(object):
         model = User
         only = [
             'email',
@@ -66,7 +66,7 @@ class NewUserAdminForm(ModelForm):
 
 class UpdateUserAdminForm(ModelForm):
 
-    class Meta:
+    class Meta(object):
         model = User
         only = ['email', 'first_name', 'last_name', 'active', 'super_user']
 
