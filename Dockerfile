@@ -5,5 +5,4 @@ RUN git clone https://github.com/thisissoon/thisissoon.com.git soon
 WORKDIR /soon
 RUN make develop
 EXPOSE 5000
-RUN manage.py db upgrade
 CMD ["manage.py", "runserver"]
