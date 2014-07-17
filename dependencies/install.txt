@@ -4,7 +4,7 @@
 #
 
 # Application
-WTForms>=1.0.5,<2.0
+WTForms==0.9.5
 Flask==0.10.1
 Flask-Migrate==1.2.0
 Flask-Security
